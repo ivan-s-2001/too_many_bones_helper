@@ -3,7 +3,80 @@
 {% block title %}{{ hero.name }} — {{ current_page.title }} — Too Many Bones Helper{% endblock %}
 
 {% block content %}
-<article class="hero-space hero-space--with-bottom-nav" style="--hero-accent: {{ hero.accent|default:'#d9d9d9' }};">
+<article class="hero-space hero-space--with-bottom-nav{% if sections|length > 1 %} hero-space--with-section-menu{% endif %}" style="--hero-accent: {{ hero.accent|default:'#d9d9d9' }};">
+    {% if sections|length > 1 %}
+        <div class="hero-section-menu" data-section-menu-root>
+            <button
+                class="hero-section-menu__toggle"
+                type="button"
+                data-section-menu-toggle
+                aria-expanded="false"
+                aria-controls="hero-section-menu-panel"
+                aria-label="Открыть меню секций"
+            >
+                <span class="hero-section-menu__toggle-icon" aria-hidden="true">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+                <span class="hero-section-menu__toggle-label">Секции</span>
+            </button>
+
+            <div class="hero-section-menu__overlay" data-section-menu-overlay hidden>
+                <button
+                    class="hero-section-menu__backdrop"
+                    type="button"
+                    data-section-menu-close
+                    aria-label="Закрыть меню секций"
+                ></button>
+
+                <div
+                    class="hero-section-menu__panel"
+                    id="hero-section-menu-panel"
+                    role="dialog"
+                    aria-modal="false"
+                    aria-label="Секции текущей страницы"
+                >
+                    <div class="hero-section-menu__panel-head">
+                        <div>
+                            <p class="hero-section-menu__eyebrow">Быстрый переход</p>
+                            <p class="hero-section-menu__title">{{ current_page.title }}</p>
+                        </div>
+
+                        <button
+                            class="hero-section-menu__close"
+                            type="button"
+                            data-section-menu-close
+                            aria-label="Закрыть меню секций"
+                        >
+                            ×
+                        </button>
+                    </div>
+
+                    <nav class="hero-section-menu__nav" aria-label="Секции текущей страницы">
+                        <ul class="hero-section-menu__list">
+                            {% for section in sections %}
+                                <li class="hero-section-menu__item">
+                                    <a
+                                        href="#section-{{ section.slug }}"
+                                        class="hero-section-menu__link"
+                                        data-section-anchor
+                                    >
+                                        <span class="hero-section-menu__link-title">{{ section.title }}</span>
+
+                                        {% if section.description %}
+                                            <span class="hero-section-menu__link-text">{{ section.description }}</span>
+                                        {% endif %}
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
     <div class="hero-space__inner">
         <header class="hero-space__header">
             <p class="hero-space__back-link-wrap">
@@ -109,6 +182,62 @@
         </section>
     </div>
 </article>
+
+{% if sections|length > 1 %}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var root = document.querySelector('[data-section-menu-root]');
+
+        if (!root) {
+            return;
+        }
+
+        var toggle = root.querySelector('[data-section-menu-toggle]');
+        var overlay = root.querySelector('[data-section-menu-overlay]');
+        var closeButtons = root.querySelectorAll('[data-section-menu-close]');
+        var sectionLinks = root.querySelectorAll('[data-section-anchor]');
+        var openClass = 'hero-section-menu--open';
+        var bodyClass = 'site-body--section-menu-open';
+
+        function openMenu() {
+            root.classList.add(openClass);
+            overlay.hidden = false;
+            toggle.setAttribute('aria-expanded', 'true');
+            document.body.classList.add(bodyClass);
+        }
+
+        function closeMenu() {
+            root.classList.remove(openClass);
+            overlay.hidden = true;
+            toggle.setAttribute('aria-expanded', 'false');
+            document.body.classList.remove(bodyClass);
+        }
+
+        toggle.addEventListener('click', function () {
+            if (root.classList.contains(openClass)) {
+                closeMenu();
+                return;
+            }
+
+            openMenu();
+        });
+
+        closeButtons.forEach(function (button) {
+            button.addEventListener('click', closeMenu);
+        });
+
+        sectionLinks.forEach(function (link) {
+            link.addEventListener('click', closeMenu);
+        });
+
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape' && root.classList.contains(openClass)) {
+                closeMenu();
+            }
+        });
+    });
+</script>
+{% endif %}
 {% endblock %}
 
 {% block fixed_bottom %}
