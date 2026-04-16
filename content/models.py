@@ -15,6 +15,7 @@ class Asset(models.Model):
     class Kind(models.TextChoices):
         GENERIC = 'generic', 'Изображение'
         HERO_PORTRAIT = 'hero-portrait', 'Портрет героя'
+        PAGE_ICON = 'page-icon', 'Иконка страницы'
 
     slug = models.SlugField('Слаг', max_length=200, unique=True)
     title = models.CharField('Название', max_length=255)

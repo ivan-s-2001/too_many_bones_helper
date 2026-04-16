@@ -60,13 +60,313 @@
     }
   },
   {
+    "model": "content.asset",
+    "pk": 101,
+    "fields": {
+      "slug": "page-icon-overview",
+      "title": "Overview / Main",
+      "kind": "page-icon",
+      "image": "assets/page-icon/overview/overview.png",
+      "alt": "Иконка страницы Overview / Main",
+      "width": 128,
+      "height": 128,
+      "order": 10,
+      "is_published": true
+    }
+  },
+  {
+    "model": "content.asset",
+    "pk": 102,
+    "fields": {
+      "slug": "page-icon-start",
+      "title": "Start",
+      "kind": "page-icon",
+      "image": "assets/page-icon/start/start.png",
+      "alt": "Иконка страницы Start",
+      "width": 128,
+      "height": 128,
+      "order": 20,
+      "is_published": true
+    }
+  },
+  {
+    "model": "content.asset",
+    "pk": 103,
+    "fields": {
+      "slug": "page-icon-progression",
+      "title": "Progression / Build",
+      "kind": "page-icon",
+      "image": "assets/page-icon/progression/progression.png",
+      "alt": "Иконка страницы Progression / Build",
+      "width": 128,
+      "height": 128,
+      "order": 30,
+      "is_published": true
+    }
+  },
+  {
+    "model": "content.asset",
+    "pk": 104,
+    "fields": {
+      "slug": "page-icon-reference",
+      "title": "Reference",
+      "kind": "page-icon",
+      "image": "assets/page-icon/reference/reference.png",
+      "alt": "Иконка страницы Reference",
+      "width": 128,
+      "height": 128,
+      "order": 40,
+      "is_published": true
+    }
+  },
+  {
+    "model": "content.asset",
+    "pk": 105,
+    "fields": {
+      "slug": "page-icon-tips",
+      "title": "Tips",
+      "kind": "page-icon",
+      "image": "assets/page-icon/tips/tips.png",
+      "alt": "Иконка страницы Tips",
+      "width": 128,
+      "height": 128,
+      "order": 50,
+      "is_published": true
+    }
+  },
+  {
+    "model": "content.asset",
+    "pk": 106,
+    "fields": {
+      "slug": "page-icon-mistakes",
+      "title": "Mistakes",
+      "kind": "page-icon",
+      "image": "assets/page-icon/mistakes/mistakes.png",
+      "alt": "Иконка страницы Mistakes",
+      "width": 128,
+      "height": 128,
+      "order": 60,
+      "is_published": true
+    }
+  },
+  {
+    "model": "content.asset",
+    "pk": 107,
+    "fields": {
+      "slug": "page-icon-tactics",
+      "title": "Tactics / Strategy",
+      "kind": "page-icon",
+      "image": "assets/page-icon/tactics/tactics.png",
+      "alt": "Иконка страницы Tactics / Strategy",
+      "width": 128,
+      "height": 128,
+      "order": 70,
+      "is_published": true
+    }
+  },
+  {
+    "model": "content.asset",
+    "pk": 108,
+    "fields": {
+      "slug": "page-icon-traits",
+      "title": "Traits / Skills",
+      "kind": "page-icon",
+      "image": "assets/page-icon/traits/traits.png",
+      "alt": "Иконка страницы Traits / Skills",
+      "width": 128,
+      "height": 128,
+      "order": 80,
+      "is_published": true
+    }
+  },
+  {
+    "model": "content.asset",
+    "pk": 109,
+    "fields": {
+      "slug": "page-icon-dice",
+      "title": "Dice",
+      "kind": "page-icon",
+      "image": "assets/page-icon/dice/dice.png",
+      "alt": "Иконка страницы Dice",
+      "width": 128,
+      "height": 128,
+      "order": 90,
+      "is_published": true
+    }
+  },
+  {
+    "model": "content.asset",
+    "pk": 110,
+    "fields": {
+      "slug": "page-icon-encounters",
+      "title": "Encounters",
+      "kind": "page-icon",
+      "image": "assets/page-icon/encounters/encounters.png",
+      "alt": "Иконка страницы Encounters",
+      "width": 128,
+      "height": 128,
+      "order": 100,
+      "is_published": true
+    }
+  },
+  {
+    "model": "content.asset",
+    "pk": 111,
+    "fields": {
+      "slug": "page-icon-synergies",
+      "title": "Synergies",
+      "kind": "page-icon",
+      "image": "assets/page-icon/synergies/synergies.png",
+      "alt": "Иконка страницы Synergies",
+      "width": 128,
+      "height": 128,
+      "order": 110,
+      "is_published": true
+    }
+  },
+  {
+    "model": "content.asset",
+    "pk": 112,
+    "fields": {
+      "slug": "page-icon-leveling",
+      "title": "Leveling",
+      "kind": "page-icon",
+      "image": "assets/page-icon/leveling/leveling.png",
+      "alt": "Иконка страницы Leveling",
+      "width": 128,
+      "height": 128,
+      "order": 120,
+      "is_published": true
+    }
+  },
+  {
+    "model": "content.asset",
+    "pk": 113,
+    "fields": {
+      "slug": "page-icon-faq",
+      "title": "FAQ",
+      "kind": "page-icon",
+      "image": "assets/page-icon/faq/faq.png",
+      "alt": "Иконка страницы FAQ",
+      "width": 128,
+      "height": 128,
+      "order": 130,
+      "is_published": true
+    }
+  },
+  {
+    "model": "content.asset",
+    "pk": 114,
+    "fields": {
+      "slug": "page-icon-tracker",
+      "title": "Tracker",
+      "kind": "page-icon",
+      "image": "assets/page-icon/tracker/tracker.png",
+      "alt": "Иконка страницы Tracker",
+      "width": 128,
+      "height": 128,
+      "order": 140,
+      "is_published": true
+    }
+  },
+  {
+    "model": "content.asset",
+    "pk": 115,
+    "fields": {
+      "slug": "page-icon-checklist",
+      "title": "Checklist",
+      "kind": "page-icon",
+      "image": "assets/page-icon/checklist/checklist.png",
+      "alt": "Иконка страницы Checklist",
+      "width": 128,
+      "height": 128,
+      "order": 150,
+      "is_published": true
+    }
+  },
+  {
+    "model": "content.asset",
+    "pk": 116,
+    "fields": {
+      "slug": "page-icon-route",
+      "title": "Route / Plan",
+      "kind": "page-icon",
+      "image": "assets/page-icon/route/route.png",
+      "alt": "Иконка страницы Route / Plan",
+      "width": 128,
+      "height": 128,
+      "order": 160,
+      "is_published": true
+    }
+  },
+  {
+    "model": "content.asset",
+    "pk": 117,
+    "fields": {
+      "slug": "page-icon-notes",
+      "title": "Notes",
+      "kind": "page-icon",
+      "image": "assets/page-icon/notes/notes.png",
+      "alt": "Иконка страницы Notes",
+      "width": 128,
+      "height": 128,
+      "order": 170,
+      "is_published": true
+    }
+  },
+  {
+    "model": "content.asset",
+    "pk": 118,
+    "fields": {
+      "slug": "page-icon-setup",
+      "title": "Setup / Prep",
+      "kind": "page-icon",
+      "image": "assets/page-icon/setup/setup.png",
+      "alt": "Иконка страницы Setup / Prep",
+      "width": 128,
+      "height": 128,
+      "order": 180,
+      "is_published": true
+    }
+  },
+  {
+    "model": "content.asset",
+    "pk": 119,
+    "fields": {
+      "slug": "page-icon-stats",
+      "title": "Stats",
+      "kind": "page-icon",
+      "image": "assets/page-icon/stats/stats.png",
+      "alt": "Иконка страницы Stats",
+      "width": 128,
+      "height": 128,
+      "order": 190,
+      "is_published": true
+    }
+  },
+  {
+    "model": "content.asset",
+    "pk": 120,
+    "fields": {
+      "slug": "page-icon-default",
+      "title": "Default",
+      "kind": "page-icon",
+      "image": "assets/page-icon/default/default.png",
+      "alt": "Иконка страницы Default",
+      "width": 128,
+      "height": 128,
+      "order": 200,
+      "is_published": true
+    }
+  },
+  {
     "model": "heroes.hero",
     "pk": 1,
     "fields": {
       "slug": "boomer",
       "name": "Boomer",
       "tagline": "Алхимик-взрывник с дальним боем.",
-      "description": "Тестовый герой для проверки выбора иконок у страниц через БД.",
+      "description": "Тестовый герой для проверки выбора иконок через Asset.",
       "accent": "#f59e0b",
       "portrait": 1,
       "order": 10,
@@ -80,7 +380,7 @@
       "slug": "patches",
       "name": "Patches",
       "tagline": "Механик поддержки и лечения.",
-      "description": "Тестовый герой для проверки портрета и рендера hero shell.",
+      "description": "Тестовый герой для проверки портрета и asset-иконок страниц.",
       "accent": "#7d6ef7",
       "portrait": 2,
       "order": 20,
@@ -94,7 +394,7 @@
       "slug": "picket",
       "name": "Picket",
       "tagline": "Живой щит и специалист по защите.",
-      "description": "Тестовый герой для проверки портрета и рендера hero shell.",
+      "description": "Тестовый герой для проверки портрета и asset-иконок страниц.",
       "accent": "#16a34a",
       "portrait": 3,
       "order": 30,
@@ -108,7 +408,7 @@
       "slug": "tantrum",
       "name": "Tantrum",
       "tagline": "Агрессивный боец ближнего боя.",
-      "description": "Тестовый герой для проверки портрета и рендера hero shell.",
+      "description": "Тестовый герой для проверки портрета и asset-иконок страниц.",
       "accent": "#ef4444",
       "portrait": 4,
       "order": 40,
@@ -125,6 +425,7 @@
       "title": "Обзор",
       "tab_label": "Обзор",
       "lead": "Стартовая страница героя Boomer.",
+      "icon": 101,
       "icon_key": "overview",
       "order": 10,
       "is_published": true
@@ -139,7 +440,8 @@
       "slug": "skills",
       "title": "Навыки",
       "tab_label": "Навыки",
-      "lead": "Страница с навыками и traits-иконкой из БД.",
+      "lead": "Страница с навыками и asset-иконкой.",
+      "icon": 108,
       "icon_key": "traits",
       "order": 20,
       "is_published": true
@@ -154,7 +456,8 @@
       "slug": "notes",
       "title": "Заметки",
       "tab_label": "Заметки",
-      "lead": "Страница с notes-иконкой из БД.",
+      "lead": "Страница с заметками и asset-иконкой.",
+      "icon": 117,
       "icon_key": "notes",
       "order": 30,
       "is_published": true
@@ -169,7 +472,8 @@
       "slug": "setup",
       "title": "Подготовка",
       "tab_label": "Подготовка",
-      "lead": "Страница с setup-иконкой из БД.",
+      "lead": "Страница с подготовкой и asset-иконкой.",
+      "icon": 118,
       "icon_key": "setup",
       "order": 40,
       "is_published": true
@@ -185,6 +489,7 @@
       "title": "Обзор",
       "tab_label": "Обзор",
       "lead": "Стартовая страница героя Patches.",
+      "icon": 101,
       "icon_key": "overview",
       "order": 10,
       "is_published": true
@@ -200,6 +505,7 @@
       "title": "Обзор",
       "tab_label": "Обзор",
       "lead": "Стартовая страница героя Picket.",
+      "icon": 101,
       "icon_key": "overview",
       "order": 10,
       "is_published": true
@@ -215,6 +521,7 @@
       "title": "Обзор",
       "tab_label": "Обзор",
       "lead": "Стартовая страница героя Tantrum.",
+      "icon": 101,
       "icon_key": "overview",
       "order": 10,
       "is_published": true
@@ -284,7 +591,7 @@
       "order": 10,
       "schema_version": 1,
       "data": {
-        "text": "Boomer используется как тестовый герой для проверки выбора иконок у страниц через admin."
+        "text": "Boomer используется как тестовый герой для проверки выбора иконок у страниц через content.Asset."
       },
       "is_published": true
     }

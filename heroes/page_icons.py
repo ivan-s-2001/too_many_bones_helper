@@ -1,32 +1,154 @@
+from django.templatetags.static import static
 from django.utils.text import slugify
 
 
-ICON_CHOICES = [
-    ('overview', 'Overview / Main'),
-    ('start', 'Start'),
-    ('progression', 'Progression / Build'),
-    ('reference', 'Reference'),
-    ('tips', 'Tips'),
-    ('mistakes', 'Mistakes'),
-    ('tactics', 'Tactics / Strategy'),
-    ('traits', 'Traits / Skills'),
-    ('dice', 'Dice'),
-    ('encounters', 'Encounters'),
-    ('synergies', 'Synergies'),
-    ('leveling', 'Leveling'),
-    ('faq', 'FAQ'),
-    ('tracker', 'Tracker'),
-    ('checklist', 'Checklist'),
-    ('route', 'Route / Plan'),
-    ('notes', 'Notes'),
-    ('setup', 'Setup / Prep'),
-    ('stats', 'Stats'),
-    ('default', 'Default'),
+DEFAULT_ICON_KEY = 'default'
+ICON_STATIC_PREFIX = 'heroes/page-icons'
+
+BUILTIN_ICON_DEFINITIONS = [
+    {
+        'key': 'overview',
+        'title': 'Overview / Main',
+        'alt': 'Иконка страницы Overview / Main',
+        'order': 10,
+        'image': 'assets/page-icon/overview/overview.png',
+    },
+    {
+        'key': 'start',
+        'title': 'Start',
+        'alt': 'Иконка страницы Start',
+        'order': 20,
+        'image': 'assets/page-icon/start/start.png',
+    },
+    {
+        'key': 'progression',
+        'title': 'Progression / Build',
+        'alt': 'Иконка страницы Progression / Build',
+        'order': 30,
+        'image': 'assets/page-icon/progression/progression.png',
+    },
+    {
+        'key': 'reference',
+        'title': 'Reference',
+        'alt': 'Иконка страницы Reference',
+        'order': 40,
+        'image': 'assets/page-icon/reference/reference.png',
+    },
+    {
+        'key': 'tips',
+        'title': 'Tips',
+        'alt': 'Иконка страницы Tips',
+        'order': 50,
+        'image': 'assets/page-icon/tips/tips.png',
+    },
+    {
+        'key': 'mistakes',
+        'title': 'Mistakes',
+        'alt': 'Иконка страницы Mistakes',
+        'order': 60,
+        'image': 'assets/page-icon/mistakes/mistakes.png',
+    },
+    {
+        'key': 'tactics',
+        'title': 'Tactics / Strategy',
+        'alt': 'Иконка страницы Tactics / Strategy',
+        'order': 70,
+        'image': 'assets/page-icon/tactics/tactics.png',
+    },
+    {
+        'key': 'traits',
+        'title': 'Traits / Skills',
+        'alt': 'Иконка страницы Traits / Skills',
+        'order': 80,
+        'image': 'assets/page-icon/traits/traits.png',
+    },
+    {
+        'key': 'dice',
+        'title': 'Dice',
+        'alt': 'Иконка страницы Dice',
+        'order': 90,
+        'image': 'assets/page-icon/dice/dice.png',
+    },
+    {
+        'key': 'encounters',
+        'title': 'Encounters',
+        'alt': 'Иконка страницы Encounters',
+        'order': 100,
+        'image': 'assets/page-icon/encounters/encounters.png',
+    },
+    {
+        'key': 'synergies',
+        'title': 'Synergies',
+        'alt': 'Иконка страницы Synergies',
+        'order': 110,
+        'image': 'assets/page-icon/synergies/synergies.png',
+    },
+    {
+        'key': 'leveling',
+        'title': 'Leveling',
+        'alt': 'Иконка страницы Leveling',
+        'order': 120,
+        'image': 'assets/page-icon/leveling/leveling.png',
+    },
+    {
+        'key': 'faq',
+        'title': 'FAQ',
+        'alt': 'Иконка страницы FAQ',
+        'order': 130,
+        'image': 'assets/page-icon/faq/faq.png',
+    },
+    {
+        'key': 'tracker',
+        'title': 'Tracker',
+        'alt': 'Иконка страницы Tracker',
+        'order': 140,
+        'image': 'assets/page-icon/tracker/tracker.png',
+    },
+    {
+        'key': 'checklist',
+        'title': 'Checklist',
+        'alt': 'Иконка страницы Checklist',
+        'order': 150,
+        'image': 'assets/page-icon/checklist/checklist.png',
+    },
+    {
+        'key': 'route',
+        'title': 'Route / Plan',
+        'alt': 'Иконка страницы Route / Plan',
+        'order': 160,
+        'image': 'assets/page-icon/route/route.png',
+    },
+    {
+        'key': 'notes',
+        'title': 'Notes',
+        'alt': 'Иконка страницы Notes',
+        'order': 170,
+        'image': 'assets/page-icon/notes/notes.png',
+    },
+    {
+        'key': 'setup',
+        'title': 'Setup / Prep',
+        'alt': 'Иконка страницы Setup / Prep',
+        'order': 180,
+        'image': 'assets/page-icon/setup/setup.png',
+    },
+    {
+        'key': 'stats',
+        'title': 'Stats',
+        'alt': 'Иконка страницы Stats',
+        'order': 190,
+        'image': 'assets/page-icon/stats/stats.png',
+    },
+    {
+        'key': 'default',
+        'title': 'Default',
+        'alt': 'Иконка страницы Default',
+        'order': 200,
+        'image': 'assets/page-icon/default/default.png',
+    },
 ]
 
-DEFAULT_ICON_KEY = 'default'
-VALID_ICON_KEYS = {key for key, _ in ICON_CHOICES}
-ICON_STATIC_PREFIX = 'heroes/page-icons'
+VALID_ICON_KEYS = {item['key'] for item in BUILTIN_ICON_DEFINITIONS}
 
 ICON_ALIASES = {
     'overview': 'overview',
@@ -103,6 +225,11 @@ def resolve_icon_alias(value: str) -> str | None:
     return ICON_ALIASES.get(normalized)
 
 
+def re_split_tokens(value: str) -> list[str]:
+    normalized = slugify(value or '').replace('-', ' ')
+    return [part for part in normalized.split() if part]
+
+
 def resolve_page_icon_key(page) -> str:
     explicit_icon = resolve_icon_alias(getattr(page, 'icon_key', ''))
     if explicit_icon:
@@ -125,10 +252,21 @@ def resolve_page_icon_key(page) -> str:
     return DEFAULT_ICON_KEY
 
 
-def build_icon_static_path(page) -> str:
-    return f'{ICON_STATIC_PREFIX}/{resolve_page_icon_key(page)}.svg'
+def build_icon_static_path(page_or_key) -> str:
+    if isinstance(page_or_key, str):
+        icon_key = resolve_icon_alias(page_or_key) or DEFAULT_ICON_KEY
+    else:
+        icon_key = resolve_page_icon_key(page_or_key)
+
+    return f'{ICON_STATIC_PREFIX}/{icon_key}.svg'
 
 
-def re_split_tokens(value: str) -> list[str]:
-    normalized = slugify(value or '').replace('-', ' ')
-    return [part for part in normalized.split() if part]
+def resolve_page_icon_url(page) -> str:
+    icon = getattr(page, 'icon', None)
+    if icon and getattr(icon, 'image', None):
+        try:
+            return icon.image.url
+        except ValueError:
+            pass
+
+    return static(build_icon_static_path(page))

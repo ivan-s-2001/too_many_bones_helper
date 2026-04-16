@@ -8,9 +8,21 @@ from .models import Hero, HeroPage, PageSection
 class HeroPageInline(admin.TabularInline):
     model = HeroPage
     extra = 0
-    fields = ('title', 'code', 'slug', 'tab_label', 'icon_key', 'order', 'is_published')
+    fields = ('title', 'code', 'slug', 'tab_label', 'icon', 'icon_preview', 'order', 'is_published')
     ordering = ('order', 'title')
     show_change_link = True
+    autocomplete_fields = ('icon',)
+    readonly_fields = ('icon_preview',)
+
+    @admin.display(description='Превью иконки')
+    def icon_preview(self, obj):
+        if not obj.pk:
+            return 'Сначала сохраните страницу.'
+
+        return format_html(
+            '<img src="{}" alt="" style="width:32px;height:32px;object-fit:contain;border-radius:8px;border:1px solid #d9d9d9;background:#fff;padding:4px;">',
+            obj.icon_url,
+        )
 
 
 class PageSectionInline(admin.TabularInline):
@@ -103,12 +115,13 @@ class HeroAdmin(admin.ModelAdmin):
 @admin.register(HeroPage)
 class HeroPageAdmin(admin.ModelAdmin):
     list_display = (
+        'icon_thumb',
         'title',
         'hero',
         'code',
         'slug',
-        'icon_key',
-        'resolved_icon_key_badge',
+        'icon_link',
+        'fallback_icon_badge',
         'order',
         'is_published',
     )
@@ -120,11 +133,15 @@ class HeroPageAdmin(admin.ModelAdmin):
         'lead',
         'hero__name',
         'hero__slug',
+        'icon__title',
+        'icon__slug',
+        'icon__alt',
     )
-    list_filter = ('hero', 'icon_key', 'is_published')
+    list_filter = ('hero', 'icon', 'is_published')
     ordering = ('hero__name', 'order', 'title')
-    list_select_related = ('hero',)
+    list_select_related = ('hero', 'icon')
     inlines = (PageSectionInline,)
+    autocomplete_fields = ('icon',)
     fields = (
         'hero',
         'title',
@@ -132,19 +149,44 @@ class HeroPageAdmin(admin.ModelAdmin):
         'slug',
         'tab_label',
         'lead',
-        'icon_key',
-        'resolved_icon_key_badge',
+        'icon',
+        'icon_preview',
+        'fallback_icon_badge',
         'order',
         'is_published',
     )
-    readonly_fields = ('resolved_icon_key_badge',)
+    readonly_fields = ('icon_preview', 'fallback_icon_badge')
 
-    @admin.display(description='Итоговая иконка')
-    def resolved_icon_key_badge(self, obj):
-        icon_key = obj.resolved_icon_key
+    @admin.display(description='Иконка')
+    def icon_thumb(self, obj):
+        return format_html(
+            '<img src="{}" alt="" style="width:32px;height:32px;object-fit:contain;border-radius:8px;border:1px solid #d9d9d9;background:#fff;padding:4px;">',
+            obj.icon_url,
+        )
+
+    @admin.display(description='Выбранный asset', ordering='icon__title')
+    def icon_link(self, obj):
+        if not obj.icon_id:
+            return '—'
+
+        url = reverse('admin:content_asset_change', args=[obj.icon_id])
+        return format_html('<a href="{}">{}</a>', url, obj.icon.title)
+
+    @admin.display(description='Fallback')
+    def fallback_icon_badge(self, obj):
         return format_html(
             '<span style="display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;border:1px solid #d9d9d9;background:#f7f7fb;font-weight:600;">{}</span>',
-            icon_key,
+            obj.resolved_icon_key,
+        )
+
+    @admin.display(description='Превью иконки')
+    def icon_preview(self, obj):
+        if not obj.pk:
+            return 'Сначала сохраните страницу.'
+
+        return format_html(
+            '<img src="{}" alt="" style="width:48px;height:48px;object-fit:contain;border-radius:10px;border:1px solid #d9d9d9;background:#fff;padding:6px;">',
+            obj.icon_url,
         )
 
 

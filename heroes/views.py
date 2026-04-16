@@ -9,7 +9,12 @@ def hero_detail(request, hero_slug, page_slug=None):
         Hero.objects.select_related('portrait').filter(is_published=True),
         slug=hero_slug,
     )
-    pages = hero.pages.filter(is_published=True).order_by('order', 'title')
+    pages = (
+        hero.pages
+        .select_related('icon')
+        .filter(is_published=True)
+        .order_by('order', 'title')
+    )
 
     if page_slug:
         current_page = get_object_or_404(pages, slug=page_slug)

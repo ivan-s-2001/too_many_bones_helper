@@ -1,4 +1,3 @@
-{% load static %}
 <nav class="hero-bottom-nav" aria-label="Страницы героя" style="--hero-accent: {{ hero.accent|default:'#d9d9d9' }};">
     <div class="hero-bottom-nav__inner">
         <div class="hero-bottom-nav__shell">
@@ -12,7 +11,7 @@
                                 title="{{ page.title }}"
                             >
                                 <img
-                                    src="{% static page.icon_static_path %}"
+                                    src="{{ page.icon_url }}"
                                     alt=""
                                     class="hero-bottom-nav__icon"
                                     aria-hidden="true"
@@ -27,7 +26,7 @@
                                 aria-label="{{ page.title }}"
                             >
                                 <img
-                                    src="{% static page.icon_static_path %}"
+                                    src="{{ page.icon_url }}"
                                     alt=""
                                     class="hero-bottom-nav__icon"
                                     aria-hidden="true"

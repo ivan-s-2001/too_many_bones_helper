@@ -147,7 +147,13 @@
 
                 <div class="hero-space__meta-row">
                     <dt>icon</dt>
-                    <dd><code>{{ current_page.resolved_icon_key }}</code></dd>
+                    <dd>
+                        {% if current_page.icon %}
+                            {{ current_page.icon.title }}
+                        {% else %}
+                            <code>{{ current_page.resolved_icon_key }}</code>
+                        {% endif %}
+                    </dd>
                 </div>
             </dl>
 
