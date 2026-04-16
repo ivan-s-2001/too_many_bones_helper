@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}{{ hero.name }} — {{ current_page.title }} — Too Many Bones Helper{% endblock %}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'heroes/hero_icons.css' %}">
+{% endblock %}
 
 {% block content %}
 <article class="hero-space hero-space--with-bottom-nav{% if sections|length > 1 %} hero-space--with-section-menu{% endif %}" style="--hero-accent: {{ hero.accent|default:'#d9d9d9' }};">
@@ -139,6 +144,11 @@
                         <dd>{{ current_page.tab_label }}</dd>
                     </div>
                 {% endif %}
+
+                <div class="hero-space__meta-row">
+                    <dt>icon</dt>
+                    <dd><code>{{ current_page.resolved_icon_key }}</code></dd>
+                </div>
             </dl>
 
             {% if sections %}

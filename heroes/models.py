@@ -1,5 +1,7 @@
 from django.db import models
 
+from .page_icons import ICON_CHOICES, build_icon_static_path, resolve_page_icon_key
+
 
 class Hero(models.Model):
     slug = models.SlugField(max_length=200, unique=True)
@@ -33,6 +35,13 @@ class HeroPage(models.Model):
     title = models.CharField(max_length=255)
     tab_label = models.CharField(max_length=255, blank=True)
     lead = models.TextField(blank=True)
+    icon_key = models.CharField(
+        max_length=32,
+        choices=ICON_CHOICES,
+        blank=True,
+        default='',
+        verbose_name='Иконка страницы',
+    )
     order = models.PositiveIntegerField(default=0)
     is_published = models.BooleanField(default=False)
 
@@ -41,6 +50,14 @@ class HeroPage(models.Model):
 
     def __str__(self) -> str:
         return f'{self.hero} — {self.title}'
+
+    @property
+    def resolved_icon_key(self) -> str:
+        return resolve_page_icon_key(self)
+
+    @property
+    def icon_static_path(self) -> str:
+        return build_icon_static_path(self)
 
 
 class PageSection(models.Model):

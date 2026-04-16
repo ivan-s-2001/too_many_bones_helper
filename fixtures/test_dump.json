@@ -66,7 +66,7 @@
       "slug": "boomer",
       "name": "Boomer",
       "tagline": "Алхимик-взрывник с дальним боем.",
-      "description": "Тестовый герой для проверки связки Hero → Asset и вывода реального портрета из media.",
+      "description": "Тестовый герой для проверки выбора иконок у страниц через БД.",
       "accent": "#f59e0b",
       "portrait": 1,
       "order": 10,
@@ -80,7 +80,7 @@
       "slug": "patches",
       "name": "Patches",
       "tagline": "Механик поддержки и лечения.",
-      "description": "Тестовый герой для проверки связки Hero → Asset и вывода реального портрета из media.",
+      "description": "Тестовый герой для проверки портрета и рендера hero shell.",
       "accent": "#7d6ef7",
       "portrait": 2,
       "order": 20,
@@ -94,7 +94,7 @@
       "slug": "picket",
       "name": "Picket",
       "tagline": "Живой щит и специалист по защите.",
-      "description": "Тестовый герой для проверки связки Hero → Asset и вывода реального портрета из media.",
+      "description": "Тестовый герой для проверки портрета и рендера hero shell.",
       "accent": "#16a34a",
       "portrait": 3,
       "order": 30,
@@ -108,7 +108,7 @@
       "slug": "tantrum",
       "name": "Tantrum",
       "tagline": "Агрессивный боец ближнего боя.",
-      "description": "Тестовый герой для проверки связки Hero → Asset и вывода реального портрета из media.",
+      "description": "Тестовый герой для проверки портрета и рендера hero shell.",
       "accent": "#ef4444",
       "portrait": 4,
       "order": 40,
@@ -125,7 +125,53 @@
       "title": "Обзор",
       "tab_label": "Обзор",
       "lead": "Стартовая страница героя Boomer.",
+      "icon_key": "overview",
       "order": 10,
+      "is_published": true
+    }
+  },
+  {
+    "model": "heroes.heropage",
+    "pk": 5,
+    "fields": {
+      "hero": 1,
+      "code": "skills",
+      "slug": "skills",
+      "title": "Навыки",
+      "tab_label": "Навыки",
+      "lead": "Страница с навыками и traits-иконкой из БД.",
+      "icon_key": "traits",
+      "order": 20,
+      "is_published": true
+    }
+  },
+  {
+    "model": "heroes.heropage",
+    "pk": 6,
+    "fields": {
+      "hero": 1,
+      "code": "notes",
+      "slug": "notes",
+      "title": "Заметки",
+      "tab_label": "Заметки",
+      "lead": "Страница с notes-иконкой из БД.",
+      "icon_key": "notes",
+      "order": 30,
+      "is_published": true
+    }
+  },
+  {
+    "model": "heroes.heropage",
+    "pk": 7,
+    "fields": {
+      "hero": 1,
+      "code": "setup",
+      "slug": "setup",
+      "title": "Подготовка",
+      "tab_label": "Подготовка",
+      "lead": "Страница с setup-иконкой из БД.",
+      "icon_key": "setup",
+      "order": 40,
       "is_published": true
     }
   },
@@ -139,6 +185,7 @@
       "title": "Обзор",
       "tab_label": "Обзор",
       "lead": "Стартовая страница героя Patches.",
+      "icon_key": "overview",
       "order": 10,
       "is_published": true
     }
@@ -153,6 +200,7 @@
       "title": "Обзор",
       "tab_label": "Обзор",
       "lead": "Стартовая страница героя Picket.",
+      "icon_key": "overview",
       "order": 10,
       "is_published": true
     }
@@ -167,6 +215,7 @@
       "title": "Обзор",
       "tab_label": "Обзор",
       "lead": "Стартовая страница героя Tantrum.",
+      "icon_key": "overview",
       "order": 10,
       "is_published": true
     }
@@ -235,7 +284,7 @@
       "order": 10,
       "schema_version": 1,
       "data": {
-        "text": "Boomer используется как тестовый герой для проверки вывода портрета из модели Asset."
+        "text": "Boomer используется как тестовый герой для проверки выбора иконок у страниц через admin."
       },
       "is_published": true
     }

@@ -8,7 +8,7 @@ from .models import Hero, HeroPage, PageSection
 class HeroPageInline(admin.TabularInline):
     model = HeroPage
     extra = 0
-    fields = ('title', 'code', 'slug', 'tab_label', 'order', 'is_published')
+    fields = ('title', 'code', 'slug', 'tab_label', 'icon_key', 'order', 'is_published')
     ordering = ('order', 'title')
     show_change_link = True
 
@@ -102,7 +102,16 @@ class HeroAdmin(admin.ModelAdmin):
 
 @admin.register(HeroPage)
 class HeroPageAdmin(admin.ModelAdmin):
-    list_display = ('title', 'hero', 'code', 'slug', 'order', 'is_published')
+    list_display = (
+        'title',
+        'hero',
+        'code',
+        'slug',
+        'icon_key',
+        'resolved_icon_key_badge',
+        'order',
+        'is_published',
+    )
     search_fields = (
         'title',
         'code',
@@ -112,10 +121,31 @@ class HeroPageAdmin(admin.ModelAdmin):
         'hero__name',
         'hero__slug',
     )
-    list_filter = ('hero', 'is_published')
+    list_filter = ('hero', 'icon_key', 'is_published')
     ordering = ('hero__name', 'order', 'title')
     list_select_related = ('hero',)
     inlines = (PageSectionInline,)
+    fields = (
+        'hero',
+        'title',
+        'code',
+        'slug',
+        'tab_label',
+        'lead',
+        'icon_key',
+        'resolved_icon_key_badge',
+        'order',
+        'is_published',
+    )
+    readonly_fields = ('resolved_icon_key_badge',)
+
+    @admin.display(description='Итоговая иконка')
+    def resolved_icon_key_badge(self, obj):
+        icon_key = obj.resolved_icon_key
+        return format_html(
+            '<span style="display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;border:1px solid #d9d9d9;background:#f7f7fb;font-weight:600;">{}</span>',
+            icon_key,
+        )
 
 
 @admin.register(PageSection)
