@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}{{ hero.name }} — Too Many Bones Helper{% endblock %}
+{% block title %}{{ hero.name }} — {{ current_page.title }} — Too Many Bones Helper{% endblock %}
 
 {% block content %}
 <article class="hero-detail">
@@ -19,18 +19,51 @@
         {% if hero.tagline %}
             <p class="page-text">{{ hero.tagline }}</p>
         {% endif %}
+
+        {% if hero.description %}
+            <p class="page-text">{{ hero.description }}</p>
+        {% endif %}
     </header>
 
-    {% if hero.description %}
-        <section class="hero-detail__body">
-            <p class="page-text">{{ hero.description }}</p>
-        </section>
-    {% endif %}
+    <section class="hero-detail__pages" style="margin-top: 32px;">
+        <h2 class="section-title">Страницы героя</h2>
 
-    <section class="hero-detail__placeholder">
-        <h2 class="section-title">Страница героя</h2>
+        <ul style="padding-left: 20px;">
+            {% for page in pages %}
+                <li>
+                    {% if page.pk == current_page.pk %}
+                        <strong>{{ page.title }}</strong>
+                        <span>— текущая страница</span>
+                    {% else %}
+                        <a href="{% url 'heroes:page_detail' hero.slug page.slug %}">{{ page.title }}</a>
+                    {% endif %}
+
+                    <div class="section-text">
+                        slug: <code>{{ page.slug }}</code>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <section class="hero-detail__current-page" style="margin-top: 32px;">
+        <h2 class="section-title">Текущая страница</h2>
+        <p class="page-text"><strong>{{ current_page.title }}</strong></p>
+        <p class="section-text">slug: <code>{{ current_page.slug }}</code></p>
+
+        {% if current_page.tab_label %}
+            <p class="section-text">tab label: {{ current_page.tab_label }}</p>
+        {% endif %}
+
+        {% if current_page.lead %}
+            <p class="page-text">{{ current_page.lead }}</p>
+        {% endif %}
+    </section>
+
+    <section class="hero-detail__placeholder" style="margin-top: 32px;">
+        <h2 class="section-title">Заглушка контента страницы</h2>
         <p class="section-text">
-            Это временная публичная заглушка для героя по slug. Контент HeroPage, секции и блоки на этом шаге ещё не выводятся.
+            На этом шаге секции и блоки ещё не рендерятся. Сейчас работает только маршрутизация героя и выбор текущей опубликованной HeroPage.
         </p>
     </section>
 </article>
