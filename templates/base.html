@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Too Many Bones Helper{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'web/site.css' %}">
+    <link rel="stylesheet" href="{% static 'web/styles.css' %}">
     {% block extra_head %}{% endblock %}
 </head>
 <body class="site-body">
@@ -21,6 +21,8 @@
                 {% block content %}{% endblock %}
             </div>
         </main>
+
+        <div class="site-bottom-placeholder" aria-hidden="true"></div>
     </div>
 </body>
 </html>

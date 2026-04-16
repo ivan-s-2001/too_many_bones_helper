@@ -6,7 +6,7 @@
 <article class="hero-detail">
     <div
         class="hero-detail__accent"
-        style="background: {{ hero.accent|default:'#d9d9d9' }}; width: 100%; height: 12px; border-radius: 999px; margin-bottom: 24px;"
+        style="background: {{ hero.accent|default:'#d9d9d9' }};"
         aria-hidden="true"
     ></div>
 
@@ -25,12 +25,12 @@
         {% endif %}
     </header>
 
-    <section class="hero-detail__pages" style="margin-top: 32px;">
+    <section class="hero-detail__pages">
         <h2 class="section-title">Страницы героя</h2>
 
-        <ul style="padding-left: 20px;">
+        <ul class="page-list">
             {% for page in pages %}
-                <li>
+                <li class="page-list__item">
                     {% if page.pk == current_page.pk %}
                         <strong>{{ page.title }}</strong>
                         <span>— текущая страница</span>
@@ -46,7 +46,7 @@
         </ul>
     </section>
 
-    <section class="hero-detail__current-page" style="margin-top: 32px;">
+    <section class="hero-detail__current-page">
         <h2 class="section-title">Текущая страница</h2>
         <p class="page-text"><strong>{{ current_page.title }}</strong></p>
         <p class="section-text">slug: <code>{{ current_page.slug }}</code></p>
@@ -60,7 +60,7 @@
         {% endif %}
     </section>
 
-    <section class="hero-detail__placeholder" style="margin-top: 32px;">
+    <section class="hero-detail__placeholder">
         <h2 class="section-title">Заглушка контента страницы</h2>
         <p class="section-text">
             На этом шаге секции и блоки ещё не рендерятся. Сейчас работает только маршрутизация героя и выбор текущей опубликованной HeroPage.
