@@ -169,6 +169,19 @@ code {
     border-radius: 0;
 }
 
+.hero-card__media {
+    aspect-ratio: 4 / 3;
+    background: linear-gradient(180deg, #fbfbfc, #f1f3f6);
+    border-bottom: 1px solid #eceef2;
+    overflow: hidden;
+}
+
+.hero-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 .hero-card__content {
     padding: var(--space-3);
 }
@@ -231,12 +244,31 @@ code {
     box-shadow: var(--shadow-sm);
 }
 
+.hero-space__header-body {
+    display: grid;
+    gap: var(--space-3);
+}
+
 .hero-space__accent {
     width: 72px;
     height: 7px;
     margin-bottom: var(--space-3);
     border-radius: 999px;
     background: var(--hero-accent);
+}
+
+.hero-space__portrait {
+    margin: 0;
+    overflow: hidden;
+    background: linear-gradient(180deg, #fbfbfc, #f1f3f6);
+    border: 1px solid #eceef2;
+    border-radius: 20px;
+}
+
+.hero-space__portrait-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
 }
 
 .hero-space__eyebrow,
@@ -414,6 +446,11 @@ code {
     .hero-space__header-card,
     .hero-space__page-shell {
         padding: var(--space-5);
+    }
+
+    .hero-space__header-body {
+        grid-template-columns: minmax(0, 1fr) 180px;
+        align-items: start;
     }
 }
 

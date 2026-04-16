@@ -1,0 +1,294 @@
+[
+  {
+    "model": "content.asset",
+    "pk": 1,
+    "fields": {
+      "slug": "boomer-portrait",
+      "title": "Портрет Boomer",
+      "kind": "hero-portrait",
+      "image": "assets/hero-portrait/boomer/boomer.png",
+      "alt": "Портрет героя Boomer",
+      "width": 679,
+      "height": 865,
+      "order": 10,
+      "is_published": true
+    }
+  },
+  {
+    "model": "content.asset",
+    "pk": 2,
+    "fields": {
+      "slug": "patches-portrait",
+      "title": "Портрет Patches",
+      "kind": "hero-portrait",
+      "image": "assets/hero-portrait/patches/patches.png",
+      "alt": "Портрет героя Patches",
+      "width": 681,
+      "height": 953,
+      "order": 20,
+      "is_published": true
+    }
+  },
+  {
+    "model": "content.asset",
+    "pk": 3,
+    "fields": {
+      "slug": "picket-portrait",
+      "title": "Портрет Picket",
+      "kind": "hero-portrait",
+      "image": "assets/hero-portrait/picket/picket.png",
+      "alt": "Портрет героя Picket",
+      "width": 659,
+      "height": 986,
+      "order": 30,
+      "is_published": true
+    }
+  },
+  {
+    "model": "content.asset",
+    "pk": 4,
+    "fields": {
+      "slug": "tantrum-portrait",
+      "title": "Портрет Tantrum",
+      "kind": "hero-portrait",
+      "image": "assets/hero-portrait/tantrum/tantrum.png",
+      "alt": "Портрет героя Tantrum",
+      "width": 1024,
+      "height": 1536,
+      "order": 40,
+      "is_published": true
+    }
+  },
+  {
+    "model": "heroes.hero",
+    "pk": 1,
+    "fields": {
+      "slug": "boomer",
+      "name": "Boomer",
+      "tagline": "Алхимик-взрывник с дальним боем.",
+      "description": "Тестовый герой для проверки связки Hero → Asset и вывода реального портрета из media.",
+      "accent": "#f59e0b",
+      "portrait": 1,
+      "order": 10,
+      "is_published": true
+    }
+  },
+  {
+    "model": "heroes.hero",
+    "pk": 2,
+    "fields": {
+      "slug": "patches",
+      "name": "Patches",
+      "tagline": "Механик поддержки и лечения.",
+      "description": "Тестовый герой для проверки связки Hero → Asset и вывода реального портрета из media.",
+      "accent": "#7d6ef7",
+      "portrait": 2,
+      "order": 20,
+      "is_published": true
+    }
+  },
+  {
+    "model": "heroes.hero",
+    "pk": 3,
+    "fields": {
+      "slug": "picket",
+      "name": "Picket",
+      "tagline": "Живой щит и специалист по защите.",
+      "description": "Тестовый герой для проверки связки Hero → Asset и вывода реального портрета из media.",
+      "accent": "#16a34a",
+      "portrait": 3,
+      "order": 30,
+      "is_published": true
+    }
+  },
+  {
+    "model": "heroes.hero",
+    "pk": 4,
+    "fields": {
+      "slug": "tantrum",
+      "name": "Tantrum",
+      "tagline": "Агрессивный боец ближнего боя.",
+      "description": "Тестовый герой для проверки связки Hero → Asset и вывода реального портрета из media.",
+      "accent": "#ef4444",
+      "portrait": 4,
+      "order": 40,
+      "is_published": true
+    }
+  },
+  {
+    "model": "heroes.heropage",
+    "pk": 1,
+    "fields": {
+      "hero": 1,
+      "code": "overview",
+      "slug": "overview",
+      "title": "Обзор",
+      "tab_label": "Обзор",
+      "lead": "Стартовая страница героя Boomer.",
+      "order": 10,
+      "is_published": true
+    }
+  },
+  {
+    "model": "heroes.heropage",
+    "pk": 2,
+    "fields": {
+      "hero": 2,
+      "code": "overview",
+      "slug": "overview",
+      "title": "Обзор",
+      "tab_label": "Обзор",
+      "lead": "Стартовая страница героя Patches.",
+      "order": 10,
+      "is_published": true
+    }
+  },
+  {
+    "model": "heroes.heropage",
+    "pk": 3,
+    "fields": {
+      "hero": 3,
+      "code": "overview",
+      "slug": "overview",
+      "title": "Обзор",
+      "tab_label": "Обзор",
+      "lead": "Стартовая страница героя Picket.",
+      "order": 10,
+      "is_published": true
+    }
+  },
+  {
+    "model": "heroes.heropage",
+    "pk": 4,
+    "fields": {
+      "hero": 4,
+      "code": "overview",
+      "slug": "overview",
+      "title": "Обзор",
+      "tab_label": "Обзор",
+      "lead": "Стартовая страница героя Tantrum.",
+      "order": 10,
+      "is_published": true
+    }
+  },
+  {
+    "model": "heroes.pagesection",
+    "pk": 1,
+    "fields": {
+      "page": 1,
+      "code": "intro",
+      "slug": "intro",
+      "title": "Введение",
+      "description": "Секция для тестового блока.",
+      "order": 10,
+      "is_published": true
+    }
+  },
+  {
+    "model": "heroes.pagesection",
+    "pk": 2,
+    "fields": {
+      "page": 2,
+      "code": "intro",
+      "slug": "intro",
+      "title": "Введение",
+      "description": "Секция для тестового блока.",
+      "order": 10,
+      "is_published": true
+    }
+  },
+  {
+    "model": "heroes.pagesection",
+    "pk": 3,
+    "fields": {
+      "page": 3,
+      "code": "intro",
+      "slug": "intro",
+      "title": "Введение",
+      "description": "Секция для тестового блока.",
+      "order": 10,
+      "is_published": true
+    }
+  },
+  {
+    "model": "heroes.pagesection",
+    "pk": 4,
+    "fields": {
+      "page": 4,
+      "code": "intro",
+      "slug": "intro",
+      "title": "Введение",
+      "description": "Секция для тестового блока.",
+      "order": 10,
+      "is_published": true
+    }
+  },
+  {
+    "model": "content.block",
+    "pk": 1,
+    "fields": {
+      "section": 1,
+      "type": "text",
+      "title": "Описание героя",
+      "variant": "lead",
+      "anchor": "hero-description",
+      "order": 10,
+      "schema_version": 1,
+      "data": {
+        "text": "Boomer используется как тестовый герой для проверки вывода портрета из модели Asset."
+      },
+      "is_published": true
+    }
+  },
+  {
+    "model": "content.block",
+    "pk": 2,
+    "fields": {
+      "section": 2,
+      "type": "text",
+      "title": "Описание героя",
+      "variant": "lead",
+      "anchor": "hero-description",
+      "order": 10,
+      "schema_version": 1,
+      "data": {
+        "text": "Patches используется как тестовый герой для проверки вывода портрета из модели Asset."
+      },
+      "is_published": true
+    }
+  },
+  {
+    "model": "content.block",
+    "pk": 3,
+    "fields": {
+      "section": 3,
+      "type": "text",
+      "title": "Описание героя",
+      "variant": "lead",
+      "anchor": "hero-description",
+      "order": 10,
+      "schema_version": 1,
+      "data": {
+        "text": "Picket используется как тестовый герой для проверки вывода портрета из модели Asset."
+      },
+      "is_published": true
+    }
+  },
+  {
+    "model": "content.block",
+    "pk": 4,
+    "fields": {
+      "section": 4,
+      "type": "text",
+      "title": "Описание героя",
+      "variant": "lead",
+      "anchor": "hero-description",
+      "order": 10,
+      "schema_version": 1,
+      "data": {
+        "text": "Tantrum используется как тестовый герой для проверки вывода портрета из модели Asset."
+      },
+      "is_published": true
+    }
+  }
+]

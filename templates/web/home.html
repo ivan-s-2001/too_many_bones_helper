@@ -29,6 +29,16 @@
                             aria-hidden="true"
                         ></div>
 
+                        {% if hero.portrait and hero.portrait.image %}
+                            <div class="hero-card__media">
+                                <img
+                                    src="{{ hero.portrait.image.url }}"
+                                    alt="{{ hero.portrait.alt|default:hero.portrait.title|default:hero.name }}"
+                                    class="hero-card__image"
+                                >
+                            </div>
+                        {% endif %}
+
                         <div class="hero-card__content">
                             <h3 class="hero-card__title">{{ hero.name }}</h3>
 

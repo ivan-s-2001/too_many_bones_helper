@@ -7,6 +7,15 @@ class Hero(models.Model):
     tagline = models.CharField(max_length=255, blank=True)
     description = models.TextField(blank=True)
     accent = models.CharField(max_length=32, blank=True)
+    portrait = models.ForeignKey(
+        'content.Asset',
+        on_delete=models.SET_NULL,
+        related_name='heroes',
+        blank=True,
+        null=True,
+        limit_choices_to={'kind': 'hero-portrait'},
+        verbose_name='Портрет',
+    )
     order = models.PositiveIntegerField(default=0)
     is_published = models.BooleanField(default=False)
 

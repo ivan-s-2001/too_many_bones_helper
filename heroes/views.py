@@ -6,7 +6,7 @@ from .models import Hero
 
 def hero_detail(request, hero_slug, page_slug=None):
     hero = get_object_or_404(
-        Hero.objects.filter(is_published=True),
+        Hero.objects.select_related('portrait').filter(is_published=True),
         slug=hero_slug,
     )
     pages = hero.pages.filter(is_published=True).order_by('order', 'title')

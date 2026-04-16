@@ -23,11 +23,81 @@ class PageSectionInline(admin.TabularInline):
 
 @admin.register(Hero)
 class HeroAdmin(admin.ModelAdmin):
-    list_display = ('name', 'slug', 'accent', 'order', 'is_published')
-    search_fields = ('name', 'slug', 'tagline', 'description', 'accent')
+    list_display = ('portrait_thumb', 'name', 'slug', 'accent', 'order', 'is_published')
+    search_fields = (
+        'name',
+        'slug',
+        'tagline',
+        'description',
+        'accent',
+        'portrait__title',
+        'portrait__slug',
+        'portrait__alt',
+    )
     list_filter = ('is_published',)
     ordering = ('order', 'name')
+    list_select_related = ('portrait',)
+    autocomplete_fields = ('portrait',)
+    readonly_fields = ('portrait_preview',)
     inlines = (HeroPageInline,)
+    fieldsets = (
+        (
+            None,
+            {
+                'fields': (
+                    'name',
+                    'slug',
+                    'portrait',
+                    'portrait_preview',
+                ),
+            },
+        ),
+        (
+            'Описание',
+            {
+                'fields': (
+                    'tagline',
+                    'description',
+                    'accent',
+                ),
+            },
+        ),
+        (
+            'Публикация и порядок',
+            {
+                'fields': (
+                    'order',
+                    'is_published',
+                ),
+            },
+        ),
+    )
+
+    def get_queryset(self, request):
+        queryset = super().get_queryset(request)
+        return queryset.select_related('portrait')
+
+    @admin.display(description='Портрет')
+    def portrait_thumb(self, obj):
+        if not obj.portrait or not obj.portrait.image:
+            return '—'
+
+        return format_html(
+            '<img src="{}" alt="{}" style="width:48px;height:48px;object-fit:cover;border-radius:12px;border:1px solid #d9d9d9;">',
+            obj.portrait.image.url,
+            obj.portrait.alt or obj.portrait.title or obj.name,
+        )
+
+    @admin.display(description='Предпросмотр портрета')
+    def portrait_preview(self, obj):
+        if not obj.portrait or not obj.portrait.image:
+            return 'Портрет пока не выбран.'
+
+        return format_html(
+            '<img src="{}" alt="{}" style="max-width:240px;width:100%;height:auto;border-radius:18px;border:1px solid #d9d9d9;">',
+            obj.portrait.image.url,
+            obj.portrait.alt or obj.portrait.title or obj.name,
+        )
 
 
 @admin.register(HeroPage)

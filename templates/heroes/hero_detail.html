@@ -11,17 +11,31 @@
             </p>
 
             <div class="hero-space__header-card">
-                <div class="hero-space__accent" aria-hidden="true"></div>
-                <p class="hero-space__eyebrow">Hero space</p>
-                <h1 class="hero-space__title">{{ hero.name }}</h1>
+                <div class="hero-space__header-body">
+                    <div class="hero-space__header-main">
+                        <div class="hero-space__accent" aria-hidden="true"></div>
+                        <p class="hero-space__eyebrow">Hero space</p>
+                        <h1 class="hero-space__title">{{ hero.name }}</h1>
 
-                {% if hero.tagline %}
-                    <p class="hero-space__tagline">{{ hero.tagline }}</p>
-                {% endif %}
+                        {% if hero.tagline %}
+                            <p class="hero-space__tagline">{{ hero.tagline }}</p>
+                        {% endif %}
 
-                {% if hero.description %}
-                    <p class="hero-space__description">{{ hero.description }}</p>
-                {% endif %}
+                        {% if hero.description %}
+                            <p class="hero-space__description">{{ hero.description }}</p>
+                        {% endif %}
+                    </div>
+
+                    {% if hero.portrait and hero.portrait.image %}
+                        <figure class="hero-space__portrait">
+                            <img
+                                src="{{ hero.portrait.image.url }}"
+                                alt="{{ hero.portrait.alt|default:hero.portrait.title|default:hero.name }}"
+                                class="hero-space__portrait-image"
+                            >
+                        </figure>
+                    {% endif %}
+                </div>
             </div>
         </header>
 

@@ -1,11 +1,102 @@
 import json
+
 from django import forms
 from django.contrib import admin
 from django.db import models
 from django.urls import reverse
 from django.utils.html import format_html
 
-from .models import Block
+from .models import Asset, Block
+
+
+@admin.register(Asset)
+class AssetAdmin(admin.ModelAdmin):
+    list_display = (
+        'preview_thumb',
+        'title',
+        'slug',
+        'kind',
+        'image_size',
+        'order',
+        'is_published',
+    )
+    list_editable = ('order', 'is_published')
+    search_fields = ('title', 'slug', 'alt')
+    list_filter = ('kind', 'is_published')
+    ordering = ('kind', 'order', 'title')
+    prepopulated_fields = {'slug': ('title',)}
+    readonly_fields = ('preview', 'width', 'height', 'image_path')
+    fieldsets = (
+        (
+            None,
+            {
+                'fields': (
+                    'title',
+                    'slug',
+                    'kind',
+                    'alt',
+                ),
+            },
+        ),
+        (
+            'Файл',
+            {
+                'fields': (
+                    'image',
+                    'preview',
+                    'image_path',
+                    'width',
+                    'height',
+                ),
+                'description': 'Загружайте изображение через Django admin. Файл будет сохранён внутри MEDIA_ROOT.',
+            },
+        ),
+        (
+            'Публикация и порядок',
+            {
+                'fields': (
+                    'order',
+                    'is_published',
+                ),
+            },
+        ),
+    )
+
+    @admin.display(description='Превью')
+    def preview_thumb(self, obj):
+        if not obj.image:
+            return '—'
+
+        return format_html(
+            '<img src="{}" alt="{}" style="width:64px;height:64px;object-fit:cover;border-radius:12px;border:1px solid #d9d9d9;">',
+            obj.image.url,
+            obj.alt or obj.title,
+        )
+
+    @admin.display(description='Размер')
+    def image_size(self, obj):
+        if not obj.width or not obj.height:
+            return '—'
+
+        return f'{obj.width} × {obj.height}'
+
+    @admin.display(description='Предпросмотр')
+    def preview(self, obj):
+        if not obj.image:
+            return 'Изображение пока не загружено.'
+
+        return format_html(
+            '<img src="{}" alt="{}" style="max-width:280px;width:100%;height:auto;border-radius:18px;border:1px solid #d9d9d9;">',
+            obj.image.url,
+            obj.alt or obj.title,
+        )
+
+    @admin.display(description='Путь в media')
+    def image_path(self, obj):
+        if not obj.image:
+            return 'Файл пока не сохранён.'
+
+        return obj.image.name
 
 
 class BlockAdminForm(forms.ModelForm):
