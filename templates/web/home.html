@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Too Many Bones Helper</title>
-</head>
-<body>
-    <h1>Too Many Bones Helper</h1>
-    <p>Стартовый каркас проекта поднят.</p>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}Too Many Bones Helper{% endblock %}
+
+{% block content %}
+<section class="page-intro">
+    <h1 class="page-title">Too Many Bones Helper</h1>
+    <p class="page-text">Стартовый каркас проекта поднят.</p>
+</section>
+{% endblock %}

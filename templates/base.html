@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Too Many Bones Helper{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'web/site.css' %}">
+    {% block extra_head %}{% endblock %}
+</head>
+<body class="site-body">
+    <div class="site-shell">
+        <header class="site-header">
+            <div class="site-container">
+                <a href="{% url 'web:home' %}" class="site-brand">Too Many Bones Helper</a>
+            </div>
+        </header>
+
+        <main class="site-main">
+            <div class="site-container">
+                {% block content %}{% endblock %}
+            </div>
+        </main>
+    </div>
+</body>
+</html>
