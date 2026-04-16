@@ -22,23 +22,25 @@
         <div class="hero-grid">
             {% for hero in heroes %}
                 <article class="hero-card">
-                    <div
-                        class="hero-card__accent"
-                        style="background: {{ hero.accent|default:'#d9d9d9' }};"
-                        aria-hidden="true"
-                    ></div>
+                    <a href="{% url 'heroes:detail' hero.slug %}" class="hero-card__link">
+                        <div
+                            class="hero-card__accent"
+                            style="background: {{ hero.accent|default:'#d9d9d9' }};"
+                            aria-hidden="true"
+                        ></div>
 
-                    <div class="hero-card__content">
-                        <h3 class="hero-card__title">{{ hero.name }}</h3>
+                        <div class="hero-card__content">
+                            <h3 class="hero-card__title">{{ hero.name }}</h3>
 
-                        {% if hero.tagline %}
-                            <p class="hero-card__tagline">{{ hero.tagline }}</p>
-                        {% endif %}
+                            {% if hero.tagline %}
+                                <p class="hero-card__tagline">{{ hero.tagline }}</p>
+                            {% endif %}
 
-                        {% if hero.description %}
-                            <p class="hero-card__description">{{ hero.description|truncatechars:220 }}</p>
-                        {% endif %}
-                    </div>
+                            {% if hero.description %}
+                                <p class="hero-card__description">{{ hero.description|truncatechars:220 }}</p>
+                            {% endif %}
+                        </div>
+                    </a>
                 </article>
             {% endfor %}
         </div>
