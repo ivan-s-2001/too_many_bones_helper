@@ -4,4 +4,4 @@ from django.apps import AppConfig
 class HeroesConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
     name = 'heroes'
-    verbose_name = 'Герои и страницы'
+    verbose_name = 'Heroes'
