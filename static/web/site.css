@@ -43,10 +43,17 @@ body.site-body {
     padding: 32px 0 48px;
 }
 
-.page-intro {
-    padding: 24px;
+.page-intro,
+.hero-list-section,
+.empty-state,
+.hero-card {
     background: #ffffff;
     border: 1px solid #dddddd;
+    border-radius: 16px;
+}
+
+.page-intro {
+    padding: 24px;
 }
 
 .page-title {
@@ -57,4 +64,108 @@ body.site-body {
 
 .page-text {
     margin: 0;
+}
+
+.hero-list-section {
+    margin-top: 20px;
+    padding: 24px;
+}
+
+.section-intro {
+    margin-bottom: 20px;
+}
+
+.section-title {
+    margin: 0 0 8px;
+    font-size: 24px;
+    line-height: 1.2;
+}
+
+.section-text {
+    margin: 0;
+    color: #555555;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+}
+
+.hero-card {
+    overflow: hidden;
+}
+
+.hero-card__accent {
+    height: 8px;
+    background: #d9d9d9;
+}
+
+.hero-card__content {
+    padding: 18px;
+}
+
+.hero-card__title {
+    margin: 0 0 8px;
+    font-size: 22px;
+    line-height: 1.2;
+}
+
+.hero-card__tagline {
+    margin: 0 0 10px;
+    font-weight: 700;
+    color: #333333;
+}
+
+.hero-card__description {
+    margin: 0;
+    color: #555555;
+}
+
+.empty-state {
+    padding: 24px;
+}
+
+.empty-state__title {
+    margin: 0 0 8px;
+    font-size: 24px;
+    line-height: 1.2;
+}
+
+.empty-state__text {
+    margin: 0;
+    color: #555555;
+}
+
+@media (max-width: 640px) {
+    .site-container {
+        width: min(100% - 24px, 960px);
+    }
+
+    .site-main {
+        padding: 24px 0 40px;
+    }
+
+    .page-intro,
+    .hero-list-section,
+    .empty-state {
+        padding: 18px;
+    }
+
+    .page-title {
+        font-size: 28px;
+    }
+
+    .section-title,
+    .empty-state__title {
+        font-size: 22px;
+    }
+
+    .hero-card__content {
+        padding: 16px;
+    }
+
+    .hero-card__title {
+        font-size: 20px;
+    }
 }

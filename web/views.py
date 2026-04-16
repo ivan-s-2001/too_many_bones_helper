@@ -1,5 +1,15 @@
 from django.shortcuts import render
 
+from heroes.models import Hero
+
 
 def home(request):
-    return render(request, 'web/home.html')
+    heroes = Hero.objects.filter(is_published=True).order_by('order', 'name')
+
+    return render(
+        request,
+        'web/home.html',
+        {
+            'heroes': heroes,
+        },
+    )

@@ -5,6 +5,51 @@
 {% block content %}
 <section class="page-intro">
     <h1 class="page-title">Too Many Bones Helper</h1>
-    <p class="page-text">Стартовый каркас проекта поднят.</p>
+    <p class="page-text">
+        Опубликованные герои из базы данных проекта.
+    </p>
+</section>
+
+<section class="hero-list-section">
+    <div class="section-intro">
+        <h2 class="section-title">Герои</h2>
+        <p class="section-text">
+            На главной странице показываются только опубликованные герои в порядке поля <code>order</code>.
+        </p>
+    </div>
+
+    {% if heroes %}
+        <div class="hero-grid">
+            {% for hero in heroes %}
+                <article class="hero-card">
+                    <div
+                        class="hero-card__accent"
+                        style="background: {{ hero.accent|default:'#d9d9d9' }};"
+                        aria-hidden="true"
+                    ></div>
+
+                    <div class="hero-card__content">
+                        <h3 class="hero-card__title">{{ hero.name }}</h3>
+
+                        {% if hero.tagline %}
+                            <p class="hero-card__tagline">{{ hero.tagline }}</p>
+                        {% endif %}
+
+                        {% if hero.description %}
+                            <p class="hero-card__description">{{ hero.description|truncatechars:220 }}</p>
+                        {% endif %}
+                    </div>
+                </article>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="empty-state">
+            <h2 class="empty-state__title">Героев пока нет</h2>
+            <p class="empty-state__text">
+                В базе данных пока нет опубликованных героев.
+                Загрузите тестовый dump или добавьте героя через админку.
+            </p>
+        </div>
+    {% endif %}
 </section>
 {% endblock %}
