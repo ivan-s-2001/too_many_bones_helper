@@ -1,5 +1,9 @@
+from django.db.models import Prefetch
 from django.http import Http404
 from django.shortcuts import get_object_or_404, render
+
+from content.block_rendering import prepare_sections_for_render
+from content.models import Block
 
 from .models import Hero
 
@@ -23,11 +27,19 @@ def hero_detail(request, hero_slug, page_slug=None):
         if current_page is None:
             raise Http404('No published pages found for this hero.')
 
-    sections = (
+    sections = list(
         current_page.sections
         .filter(is_published=True)
+        .prefetch_related(
+            Prefetch(
+                'blocks',
+                queryset=Block.objects.filter(is_published=True).order_by('order', 'id'),
+                to_attr='published_blocks',
+            )
+        )
         .order_by('order', 'title')
     )
+    prepare_sections_for_render(sections)
 
     return render(
         request,

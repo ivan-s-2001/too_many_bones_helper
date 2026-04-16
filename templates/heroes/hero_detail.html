@@ -176,13 +176,18 @@
                                 {% endif %}
                             </div>
 
-                            <div
-                                class="hero-space__section-blocks"
-                                aria-label="Будущие блоки секции {{ section.title }}"
-                            >
-                                <p class="hero-space__section-blocks-placeholder">
-                                    Здесь появятся блоки секции на следующем шаге.
-                                </p>
+                            <div class="hero-space__section-blocks" aria-label="Блоки секции {{ section.title }}">
+                                {% if section.render_blocks %}
+                                    {% for block in section.render_blocks %}
+                                        {% if block.render_template %}
+                                            {% include block.render_template with block=block %}
+                                        {% endif %}
+                                    {% endfor %}
+                                {% else %}
+                                    <p class="hero-space__section-blocks-empty">
+                                        В этой секции пока нет опубликованных блоков.
+                                    </p>
+                                {% endif %}
                             </div>
                         </section>
                     {% endfor %}

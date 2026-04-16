@@ -1,0 +1,15 @@
+<article class="content-block content-block--text"{% if block.anchor %} id="block-{{ block.anchor }}"{% endif %}>
+    {% if block.title %}
+        <h4 class="content-block__title">{{ block.title }}</h4>
+    {% endif %}
+
+    <div class="content-block__text">
+        {% if block.text_paragraphs %}
+            {% for paragraph in block.text_paragraphs %}
+                <p class="content-block__paragraph">{{ paragraph|linebreaksbr }}</p>
+            {% endfor %}
+        {% else %}
+            <p class="content-block__empty">Текстовый блок пока пустой.</p>
+        {% endif %}
+    </div>
+</article>

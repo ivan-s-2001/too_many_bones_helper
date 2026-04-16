@@ -534,9 +534,22 @@
       "page": 1,
       "code": "intro",
       "slug": "intro",
-      "title": "Введение",
-      "description": "Секция для тестового блока.",
+      "title": "Кто такой Boomer",
+      "description": "Короткое знакомство и роль героя в партии.",
       "order": 10,
+      "is_published": true
+    }
+  },
+  {
+    "model": "heroes.pagesection",
+    "pk": 5,
+    "fields": {
+      "page": 1,
+      "code": "first-turn",
+      "slug": "first-turn",
+      "title": "С чего начать партию",
+      "description": "Быстрые ориентиры для первых ходов и первых покупок.",
+      "order": 20,
       "is_published": true
     }
   },
@@ -585,13 +598,47 @@
     "fields": {
       "section": 1,
       "type": "text",
-      "title": "Описание героя",
+      "title": "Общее ощущение",
       "variant": "lead",
       "anchor": "hero-description",
       "order": 10,
       "schema_version": 1,
       "data": {
-        "text": "Boomer используется как тестовый герой для проверки выбора иконок у страниц через content.Asset."
+        "text": "Boomer — это герой, который давит темпом и взрывными решениями. Она любит заранее готовить поле, а потом резко превращать хороший ход в очень сильный.\n\nНа тестовой странице этот блок нужен как первый реальный пример публичного контента вместо placeholder."
+      },
+      "is_published": true
+    }
+  },
+  {
+    "model": "content.block",
+    "pk": 5,
+    "fields": {
+      "section": 1,
+      "type": "text",
+      "title": "Что даёт эта тестовая страница",
+      "variant": "",
+      "anchor": "page-check",
+      "order": 20,
+      "schema_version": 1,
+      "data": {
+        "text": "Теперь секция рендерит настоящий `text`-блок из JSON-поля `data`, а не служебную заглушку.\n\nФормат для этого шага намеренно простой: в блоке хранится объект вида `{\"text\": \"...\"}`."
+      },
+      "is_published": true
+    }
+  },
+  {
+    "model": "content.block",
+    "pk": 6,
+    "fields": {
+      "section": 5,
+      "type": "text",
+      "title": "Первый фокус",
+      "variant": "",
+      "anchor": "first-focus",
+      "order": 10,
+      "schema_version": 1,
+      "data": {
+        "text": "На старте партии удобно думать не про идеальный билд, а про ближайшие два-три безопасных решения.\n\nСначала оцени, как быстро ты можешь получить пользу от бомб и как не остаться без темпа в первом бою."
       },
       "is_published": true
     }

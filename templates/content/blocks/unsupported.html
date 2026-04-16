@@ -1,0 +1,9 @@
+<article class="content-block content-block--unsupported"{% if block.anchor %} id="block-{{ block.anchor }}"{% endif %}>
+    {% if block.title %}
+        <h4 class="content-block__title">{{ block.title }}</h4>
+    {% endif %}
+
+    <p class="content-block__technical-note">
+        Блок типа <code>{{ block.type }}</code> пока не поддерживается в публичном шаблоне.
+    </p>
+</article>
