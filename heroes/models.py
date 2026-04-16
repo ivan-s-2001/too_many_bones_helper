@@ -32,3 +32,19 @@ class HeroPage(models.Model):
 
     def __str__(self) -> str:
         return f'{self.hero} — {self.title}'
+
+
+class PageSection(models.Model):
+    page = models.ForeignKey(HeroPage, on_delete=models.CASCADE, related_name='sections')
+    code = models.CharField(max_length=100)
+    slug = models.SlugField(max_length=200)
+    title = models.CharField(max_length=255)
+    description = models.TextField(blank=True)
+    order = models.PositiveIntegerField(default=0)
+    is_published = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ('page', 'order', 'title')
+
+    def __str__(self) -> str:
+        return f'{self.page} — {self.title}'
