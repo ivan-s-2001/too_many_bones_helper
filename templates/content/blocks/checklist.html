@@ -1,0 +1,32 @@
+<article class="content-block content-block--checklist"{% if block.anchor %} id="block-{{ block.anchor }}"{% endif %}>
+    <div class="content-block__checklist-head">
+        <div>
+            {% if block.title %}
+                <h4 class="content-block__title">{{ block.title }}</h4>
+            {% endif %}
+
+            {% if block.checklist_intro %}
+                <p class="content-block__lead">{{ block.checklist_intro|linebreaksbr }}</p>
+            {% endif %}
+        </div>
+
+        {% if block.checklist_total_count %}
+            <p class="content-block__checklist-stats">
+                {{ block.checklist_checked_count }} / {{ block.checklist_total_count }}
+            </p>
+        {% endif %}
+    </div>
+
+    {% if block.checklist_items %}
+        <ul class="content-block__checklist">
+            {% for item in block.checklist_items %}
+                <li class="content-block__checklist-item{% if item.checked %} content-block__checklist-item--checked{% endif %}">
+                    <span class="content-block__checklist-icon" aria-hidden="true">{% if item.checked %}✓{% else %}•{% endif %}</span>
+                    <span class="content-block__checklist-text">{{ item.text }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="content-block__empty">Чеклист пока пустой.</p>
+    {% endif %}
+</article>

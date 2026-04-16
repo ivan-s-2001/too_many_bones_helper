@@ -1,0 +1,19 @@
+<article class="content-block content-block--list"{% if block.anchor %} id="block-{{ block.anchor }}"{% endif %}>
+    {% if block.title %}
+        <h4 class="content-block__title">{{ block.title }}</h4>
+    {% endif %}
+
+    {% if block.list_intro %}
+        <p class="content-block__lead">{{ block.list_intro|linebreaksbr }}</p>
+    {% endif %}
+
+    {% if block.list_items %}
+        <ul class="content-block__list">
+            {% for item in block.list_items %}
+                <li class="content-block__list-item">{{ item }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="content-block__empty">Список пока пустой.</p>
+    {% endif %}
+</article>

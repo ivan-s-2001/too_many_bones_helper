@@ -1,0 +1,21 @@
+<article class="content-block content-block--accent"{% if block.anchor %} id="block-{{ block.anchor }}"{% endif %}>
+    {% if block.accent_badge %}
+        <p class="content-block__accent-badge">{{ block.accent_badge }}</p>
+    {% endif %}
+
+    {% if block.title %}
+        <h4 class="content-block__title">{{ block.title }}</h4>
+    {% endif %}
+
+    {% if block.accent_text %}
+        <p class="content-block__accent-text">{{ block.accent_text|linebreaksbr }}</p>
+    {% endif %}
+
+    {% if block.accent_note %}
+        <p class="content-block__accent-note">{{ block.accent_note|linebreaksbr }}</p>
+    {% endif %}
+
+    {% if not block.title and not block.accent_badge and not block.accent_text and not block.accent_note %}
+        <p class="content-block__empty">Акцентный блок пока пустой.</p>
+    {% endif %}
+</article>

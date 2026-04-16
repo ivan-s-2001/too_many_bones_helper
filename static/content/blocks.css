@@ -1,0 +1,166 @@
+.content-block__lead {
+    margin: 0 0 14px;
+    color: var(--muted-text-color);
+}
+
+.content-block__eyebrow {
+    margin: 0 0 8px;
+    color: var(--muted-text-color);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.content-block__list,
+.content-block__checklist {
+    display: grid;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.content-block__list-item,
+.content-block__checklist-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 14px;
+    background: #f7f8fb;
+    border: 1px solid #e6e8ee;
+    border-radius: 16px;
+}
+
+.content-block__list-item::before {
+    content: '•';
+    flex: 0 0 auto;
+    color: var(--hero-accent);
+    font-weight: 800;
+}
+
+.content-block--fact {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(244, 247, 255, 0.95));
+}
+
+.content-block__fact-value {
+    margin: 0;
+    font-size: clamp(2rem, 6vw, 3.2rem);
+    line-height: 0.95;
+    letter-spacing: -0.05em;
+    font-weight: 900;
+}
+
+.content-block__fact-label {
+    margin: 10px 0 0;
+    font-size: 1.1rem;
+    line-height: 1.2;
+}
+
+.content-block__fact-description {
+    margin: 10px 0 0;
+    color: var(--muted-text-color);
+}
+
+.content-block--accent {
+    border-color: color-mix(in srgb, var(--hero-accent) 45%, #d9dde6);
+    background: linear-gradient(135deg, color-mix(in srgb, var(--hero-accent) 10%, #ffffff), rgba(255, 255, 255, 0.98));
+}
+
+.content-block__accent-badge {
+    display: inline-flex;
+    align-items: center;
+    margin: 0 0 10px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.82);
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.content-block__accent-text {
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    font-weight: 700;
+}
+
+.content-block__accent-note {
+    margin: 10px 0 0;
+    color: var(--muted-text-color);
+}
+
+.content-block__cards-grid {
+    display: grid;
+    gap: 12px;
+}
+
+.content-card {
+    padding: 16px;
+    background: #f7f8fb;
+    border: 1px solid #e6e8ee;
+    border-radius: 18px;
+}
+
+.content-card__title {
+    margin: 0 0 8px;
+    font-size: 1rem;
+    line-height: 1.2;
+}
+
+.content-card__text {
+    margin: 0;
+    color: var(--muted-text-color);
+}
+
+.content-block__checklist-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.content-block__checklist-stats {
+    margin: 0;
+    flex: 0 0 auto;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: #f3f4f7;
+    border: 1px solid #e6e8ee;
+    font-size: 0.82rem;
+    font-weight: 800;
+}
+
+.content-block__checklist-icon {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    margin-top: 1px;
+    border-radius: 999px;
+    background: #eef1f6;
+    font-size: 0.8rem;
+    font-weight: 800;
+}
+
+.content-block__checklist-item--checked {
+    background: color-mix(in srgb, var(--hero-accent) 10%, #ffffff);
+    border-color: color-mix(in srgb, var(--hero-accent) 40%, #d9dde6);
+}
+
+.content-block__checklist-item--checked .content-block__checklist-text {
+    text-decoration: line-through;
+    color: var(--muted-text-color);
+}
+
+@media (min-width: 720px) {
+    .content-block__cards-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}

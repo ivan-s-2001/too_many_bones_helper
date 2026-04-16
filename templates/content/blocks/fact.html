@@ -1,0 +1,21 @@
+<article class="content-block content-block--fact"{% if block.anchor %} id="block-{{ block.anchor }}"{% endif %}>
+    {% if block.title %}
+        <p class="content-block__eyebrow">{{ block.title }}</p>
+    {% endif %}
+
+    {% if block.fact_value %}
+        <div class="content-block__fact-value">{{ block.fact_value }}</div>
+    {% endif %}
+
+    {% if block.fact_label %}
+        <h4 class="content-block__fact-label">{{ block.fact_label }}</h4>
+    {% endif %}
+
+    {% if block.fact_description %}
+        <p class="content-block__fact-description">{{ block.fact_description|linebreaksbr }}</p>
+    {% endif %}
+
+    {% if not block.fact_value and not block.fact_label and not block.fact_description %}
+        <p class="content-block__empty">Факт пока не заполнен.</p>
+    {% endif %}
+</article>

@@ -1,0 +1,36 @@
+.tmb-block-editor-guide {
+    padding: 16px 18px;
+    background: #f7f8fb;
+    border: 1px solid #d9dde6;
+    border-radius: 16px;
+}
+
+.tmb-block-editor-guide__current-title {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.tmb-block-editor-guide__current-text {
+    margin: 8px 0 0;
+    color: #566070;
+    max-width: 72ch;
+}
+
+.tmb-block-editor-guide__badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.tmb-block-editor-guide__badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: #ffffff;
+    border: 1px solid #d9dde6;
+    font-size: 0.85rem;
+    font-weight: 600;
+}

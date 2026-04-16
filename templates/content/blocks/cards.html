@@ -1,0 +1,27 @@
+<article class="content-block content-block--cards"{% if block.anchor %} id="block-{{ block.anchor }}"{% endif %}>
+    {% if block.title %}
+        <h4 class="content-block__title">{{ block.title }}</h4>
+    {% endif %}
+
+    {% if block.cards_intro %}
+        <p class="content-block__lead">{{ block.cards_intro|linebreaksbr }}</p>
+    {% endif %}
+
+    {% if block.cards_items %}
+        <div class="content-block__cards-grid">
+            {% for item in block.cards_items %}
+                <section class="content-card">
+                    {% if item.title %}
+                        <h5 class="content-card__title">{{ item.title }}</h5>
+                    {% endif %}
+
+                    {% if item.text %}
+                        <p class="content-card__text">{{ item.text|linebreaksbr }}</p>
+                    {% endif %}
+                </section>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="content-block__empty">Карточки пока не заполнены.</p>
+    {% endif %}
+</article>
