@@ -3,43 +3,45 @@
 {% block title %}Too Many Bones Helper{% endblock %}
 
 {% block content %}
-<section class="page-intro">
-    <h1 class="page-title">Too Many Bones Helper</h1>
+<section class="page-intro page-intro--hero-index">
+    <p class="page-intro__eyebrow">Too Many Bones</p>
+    <h1 class="page-title">Герои</h1>
     <p class="page-text">
-        Опубликованные герои из базы данных проекта.
+        Каталог опубликованных героев. Теперь карточки не режут портреты как попало: персонаж стоит в отдельной сцене,
+        показывается целиком и читается как игровой портрет, а не как случайный обрезанный кусок PNG.
     </p>
 </section>
 
 <section class="hero-list-section">
-    <div class="section-intro">
-        <h2 class="section-title">Герои</h2>
+    <div class="section-intro section-intro--compact">
+        <h2 class="section-title">Выберите героя</h2>
         <p class="section-text">
-            На главной странице показываются только опубликованные герои в порядке поля <code>order</code>.
+            Карточки построены вокруг портрета: фон подстраивается под accent, сам герой стоит на сцене и не обрезается.
         </p>
     </div>
 
     {% if heroes %}
         <div class="hero-grid">
             {% for hero in heroes %}
-                <article class="hero-card">
+                <article class="hero-card" style="--hero-accent: {{ hero.accent|default:'#d9d9d9' }};">
                     <a href="{% url 'heroes:detail' hero.slug %}" class="hero-card__link">
-                        <div
-                            class="hero-card__accent"
-                            style="background: {{ hero.accent|default:'#d9d9d9' }};"
-                            aria-hidden="true"
-                        ></div>
+                        <div class="hero-card__media">
+                            <div class="hero-card__media-glow" aria-hidden="true"></div>
+                            <div class="hero-card__media-floor" aria-hidden="true"></div>
 
-                        {% if hero.portrait and hero.portrait.image %}
-                            <div class="hero-card__media">
+                            {% if hero.portrait and hero.portrait.image %}
                                 <img
                                     src="{{ hero.portrait.image.url }}"
                                     alt="{{ hero.portrait.alt|default:hero.portrait.title|default:hero.name }}"
                                     class="hero-card__image"
                                 >
-                            </div>
-                        {% endif %}
+                            {% else %}
+                                <div class="hero-card__image-fallback">Портрет не загружен</div>
+                            {% endif %}
+                        </div>
 
                         <div class="hero-card__content">
+                            <p class="hero-card__kicker">Gearloc</p>
                             <h3 class="hero-card__title">{{ hero.name }}</h3>
 
                             {% if hero.tagline %}
@@ -47,8 +49,10 @@
                             {% endif %}
 
                             {% if hero.description %}
-                                <p class="hero-card__description">{{ hero.description|truncatechars:220 }}</p>
+                                <p class="hero-card__description">{{ hero.description|truncatechars:180 }}</p>
                             {% endif %}
+
+                            <span class="hero-card__cta">Открыть героя <span aria-hidden="true">→</span></span>
                         </div>
                     </a>
                 </article>

@@ -26,15 +26,20 @@
                         {% endif %}
                     </div>
 
-                    {% if hero.portrait and hero.portrait.image %}
-                        <figure class="hero-space__portrait">
+                    <div class="hero-space__portrait-stage">
+                        <div class="hero-space__portrait-glow" aria-hidden="true"></div>
+                        <div class="hero-space__portrait-floor" aria-hidden="true"></div>
+
+                        {% if hero.portrait and hero.portrait.image %}
                             <img
                                 src="{{ hero.portrait.image.url }}"
                                 alt="{{ hero.portrait.alt|default:hero.portrait.title|default:hero.name }}"
                                 class="hero-space__portrait-image"
                             >
-                        </figure>
-                    {% endif %}
+                        {% else %}
+                            <div class="hero-space__portrait-fallback">Портрет героя пока не загружен</div>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
         </header>
@@ -66,8 +71,8 @@
             <div class="hero-space__placeholder">
                 <p class="hero-space__placeholder-title">Контент страницы будет здесь</p>
                 <p class="hero-space__placeholder-text">
-                    На этом шаге shell дополнен fixed нижней навигацией по HeroPage.
-                    Section menu, scroll spy, рендер секций, блоки и сложная анимация пока не включены.
+                    На этом шаге переработан именно фронт hero header: портрет стоит в отдельной сцене,
+                    показывается целиком, не утыкается в края и не режется как случайная фотография.
                 </p>
             </div>
         </section>
