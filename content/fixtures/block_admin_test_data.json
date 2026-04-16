@@ -1,0 +1,75 @@
+[
+  {
+    "model": "heroes.hero",
+    "pk": 1,
+    "fields": {
+      "slug": "test-hero",
+      "name": "Test Hero",
+      "tagline": "Admin check",
+      "description": "Technical hero for local admin test.",
+      "accent": "#7b5cff",
+      "order": 1,
+      "is_published": true
+    }
+  },
+  {
+    "model": "heroes.heropage",
+    "pk": 1,
+    "fields": {
+      "hero": 1,
+      "code": "overview",
+      "slug": "overview",
+      "title": "Overview",
+      "tab_label": "Overview",
+      "lead": "Short technical overview page.",
+      "order": 1,
+      "is_published": true
+    }
+  },
+  {
+    "model": "heroes.heropage",
+    "pk": 2,
+    "fields": {
+      "hero": 1,
+      "code": "skills",
+      "slug": "skills",
+      "title": "Skills",
+      "tab_label": "Skills",
+      "lead": "Second technical page for relation check.",
+      "order": 2,
+      "is_published": true
+    }
+  },
+  {
+    "model": "heroes.pagesection",
+    "pk": 1,
+    "fields": {
+      "page": 1,
+      "code": "main-blocks",
+      "slug": "main-blocks",
+      "title": "Main Blocks",
+      "description": "Single test section.",
+      "order": 1,
+      "is_published": true
+    }
+  },
+  {
+    "model": "content.block",
+    "pk": 1,
+    "fields": {
+      "section": 1,
+      "type": "stats",
+      "title": "Block 1",
+      "variant": "simple",
+      "anchor": "block-1",
+      "order": 1,
+      "schema_version": 1,
+      "data": {
+        "label": "HP",
+        "value": 10,
+        "note": "fixture"
+      },
+      "is_published": true
+    }
+  }
+]
