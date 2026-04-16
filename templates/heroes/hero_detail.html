@@ -68,13 +68,44 @@
                 {% endif %}
             </dl>
 
-            <div class="hero-space__placeholder">
-                <p class="hero-space__placeholder-title">Контент страницы будет здесь</p>
-                <p class="hero-space__placeholder-text">
-                    На этом шаге переработан именно фронт hero header: портрет стоит в отдельной сцене,
-                    показывается целиком, не утыкается в края и не режется как случайная фотография.
-                </p>
-            </div>
+            {% if sections %}
+                <div class="hero-space__sections" aria-label="Секции текущей страницы">
+                    {% for section in sections %}
+                        <section
+                            class="hero-space__section"
+                            id="section-{{ section.slug }}"
+                            aria-labelledby="section-title-{{ section.slug }}"
+                        >
+                            <div class="hero-space__section-head">
+                                <p class="hero-space__section-kicker">Section</p>
+                                <h3 class="hero-space__section-title" id="section-title-{{ section.slug }}">
+                                    {{ section.title }}
+                                </h3>
+
+                                {% if section.description %}
+                                    <p class="hero-space__section-description">{{ section.description }}</p>
+                                {% endif %}
+                            </div>
+
+                            <div
+                                class="hero-space__section-blocks"
+                                aria-label="Будущие блоки секции {{ section.title }}"
+                            >
+                                <p class="hero-space__section-blocks-placeholder">
+                                    Здесь появятся блоки секции на следующем шаге.
+                                </p>
+                            </div>
+                        </section>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="hero-space__placeholder">
+                    <p class="hero-space__placeholder-title">Для этой страницы пока нет опубликованных секций</p>
+                    <p class="hero-space__placeholder-text">
+                        Hero shell сохранён. На следующем шаге сюда можно будет добавить меню секций и рендеринг блоков.
+                    </p>
+                </div>
+            {% endif %}
         </section>
     </div>
 </article>

@@ -18,6 +18,12 @@ def hero_detail(request, hero_slug, page_slug=None):
         if current_page is None:
             raise Http404('No published pages found for this hero.')
 
+    sections = (
+        current_page.sections
+        .filter(is_published=True)
+        .order_by('order', 'title')
+    )
+
     return render(
         request,
         'heroes/hero_detail.html',
@@ -25,5 +31,6 @@ def hero_detail(request, hero_slug, page_slug=None):
             'hero': hero,
             'current_page': current_page,
             'pages': pages,
+            'sections': sections,
         },
     )
