@@ -15,3 +15,20 @@ class Hero(models.Model):
 
     def __str__(self) -> str:
         return self.name
+
+
+class HeroPage(models.Model):
+    hero = models.ForeignKey(Hero, on_delete=models.CASCADE, related_name='pages')
+    code = models.CharField(max_length=100)
+    slug = models.SlugField(max_length=200)
+    title = models.CharField(max_length=255)
+    tab_label = models.CharField(max_length=255, blank=True)
+    lead = models.TextField(blank=True)
+    order = models.PositiveIntegerField(default=0)
+    is_published = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ('hero', 'order', 'title')
+
+    def __str__(self) -> str:
+        return f'{self.hero} — {self.title}'
