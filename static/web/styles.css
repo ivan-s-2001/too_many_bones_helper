@@ -17,7 +17,8 @@
     --space-4: 20px;
     --space-5: 24px;
     --space-6: 32px;
-    --future-bottom-bar-space: 88px;
+    --hero-bottom-nav-height: 92px;
+    --safe-area-bottom: env(safe-area-inset-bottom, 0px);
     --hero-accent: #d9d9d9;
 }
 
@@ -97,11 +98,6 @@ code {
 
 .site-main .site-container > * + * {
     margin-top: var(--space-4);
-}
-
-.site-bottom-placeholder {
-    flex: 0 0 auto;
-    min-height: calc(var(--future-bottom-bar-space) + env(safe-area-inset-bottom));
 }
 
 .page-intro,
@@ -206,6 +202,10 @@ code {
     margin: 0 auto;
 }
 
+.hero-space--with-bottom-nav {
+    padding-bottom: calc(var(--hero-bottom-nav-height) + var(--safe-area-bottom) + var(--space-4));
+}
+
 .hero-space__inner {
     display: flex;
     flex-direction: column;
@@ -223,7 +223,6 @@ code {
 }
 
 .hero-space__header-card,
-.hero-space__nav,
 .hero-space__page-shell {
     padding: var(--space-4);
     background: var(--surface-color);
@@ -269,59 +268,10 @@ code {
 }
 
 .hero-space__description,
-.hero-space__section-text,
 .hero-space__page-lead,
 .hero-space__placeholder-text {
     margin: var(--space-2) 0 0;
     color: var(--muted-text-color);
-}
-
-.hero-space__section-title {
-    margin: 0;
-    font-size: 1.1rem;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
-}
-
-.hero-space__page-list {
-    display: grid;
-    gap: var(--space-2);
-    margin: var(--space-3) 0 0;
-    padding: 0;
-    list-style: none;
-}
-
-.hero-space__page-item {
-    margin: 0;
-}
-
-.hero-space__page-link {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    padding: 14px 16px;
-    color: inherit;
-    text-decoration: none;
-    background: #f8f9fb;
-    border: 1px solid #e5e7eb;
-    border-radius: 18px;
-}
-
-.hero-space__page-link--current {
-    background: color-mix(in srgb, var(--hero-accent) 12%, #ffffff);
-    border-color: color-mix(in srgb, var(--hero-accent) 45%, #d7dbe3);
-}
-
-.hero-space__page-label {
-    font-size: 0.98rem;
-    font-weight: 700;
-    line-height: 1.2;
-}
-
-.hero-space__page-meta {
-    color: var(--muted-text-color);
-    font-size: 0.87rem;
-    line-height: 1.35;
 }
 
 .hero-space__page-head > * + * {
@@ -379,6 +329,69 @@ code {
     font-weight: 700;
 }
 
+.hero-bottom-nav {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 40;
+    padding: 0 var(--site-side-padding) calc(10px + var(--safe-area-bottom));
+    pointer-events: none;
+}
+
+.hero-bottom-nav__inner {
+    width: min(100%, var(--site-max-width));
+    margin: 0 auto;
+    pointer-events: auto;
+}
+
+.hero-bottom-nav__shell {
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 24px 24px 22px 22px;
+    box-shadow: 0 -8px 24px rgba(15, 23, 42, 0.08);
+    backdrop-filter: blur(18px);
+}
+
+.hero-bottom-nav__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.hero-bottom-nav__item {
+    min-width: 0;
+}
+
+.hero-bottom-nav__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 52px;
+    padding: 10px 12px;
+    overflow: hidden;
+    color: inherit;
+    text-decoration: none;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    background: #f6f7fb;
+    border: 1px solid #e6e8ee;
+    border-radius: 16px;
+    font-size: 0.92rem;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.hero-bottom-nav__link--current {
+    background: color-mix(in srgb, var(--hero-accent) 14%, #ffffff);
+    border-color: color-mix(in srgb, var(--hero-accent) 48%, #d7dbe3);
+    color: var(--text-color);
+}
+
 @media (min-width: 640px) {
     :root {
         --site-side-padding: 20px;
@@ -399,7 +412,6 @@ code {
     }
 
     .hero-space__header-card,
-    .hero-space__nav,
     .hero-space__page-shell {
         padding: var(--space-5);
     }
@@ -411,7 +423,7 @@ code {
     }
 
     .hero-space__back-link:hover,
-    .hero-space__page-link:hover,
+    .hero-bottom-nav__link:hover,
     a:hover {
         opacity: 0.9;
     }

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{% static 'web/styles.css' %}">
     {% block extra_head %}{% endblock %}
 </head>
-<body class="site-body">
+<body class="site-body{% block body_class %}{% endblock %}">
     <div class="site-shell">
         <header class="site-header">
             <div class="site-container">
@@ -21,8 +21,8 @@
                 {% block content %}{% endblock %}
             </div>
         </main>
-
-        <div class="site-bottom-placeholder" aria-hidden="true"></div>
     </div>
+
+    {% block fixed_bottom %}{% endblock %}
 </body>
 </html>

@@ -1,0 +1,30 @@
+<nav class="hero-bottom-nav" aria-label="Страницы героя" style="--hero-accent: {{ hero.accent|default:'#d9d9d9' }};">
+    <div class="hero-bottom-nav__inner">
+        <div class="hero-bottom-nav__shell">
+            <ul class="hero-bottom-nav__list">
+                {% for page in pages %}
+                    <li class="hero-bottom-nav__item">
+                        {% if page.pk == current_page.pk %}
+                            <span
+                                class="hero-bottom-nav__link hero-bottom-nav__link--current"
+                                aria-current="page"
+                                title="{{ page.title }}"
+                            >
+                                {{ page.tab_label|default:page.title }}
+                            </span>
+                        {% else %}
+                            <a
+                                href="{% url 'heroes:page_detail' hero.slug page.slug %}"
+                                class="hero-bottom-nav__link"
+                                title="{{ page.title }}"
+                                aria-label="{{ page.title }}"
+                            >
+                                {{ page.tab_label|default:page.title }}
+                            </a>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</nav>

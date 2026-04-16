@@ -3,7 +3,7 @@
 {% block title %}{{ hero.name }} — {{ current_page.title }} — Too Many Bones Helper{% endblock %}
 
 {% block content %}
-<article class="hero-space" style="--hero-accent: {{ hero.accent|default:'#d9d9d9' }};">
+<article class="hero-space hero-space--with-bottom-nav" style="--hero-accent: {{ hero.accent|default:'#d9d9d9' }};">
     <div class="hero-space__inner">
         <header class="hero-space__header">
             <p class="hero-space__back-link-wrap">
@@ -24,33 +24,6 @@
                 {% endif %}
             </div>
         </header>
-
-        <nav class="hero-space__nav" aria-label="Страницы героя">
-            <div class="hero-space__nav-intro">
-                <h2 class="hero-space__section-title">Страницы</h2>
-                <p class="hero-space__section-text">
-                    Выберите страницу героя. Секции и блоки появятся на следующем шаге.
-                </p>
-            </div>
-
-            <ul class="hero-space__page-list">
-                {% for page in pages %}
-                    <li class="hero-space__page-item">
-                        {% if page.pk == current_page.pk %}
-                            <span class="hero-space__page-link hero-space__page-link--current" aria-current="page">
-                                <span class="hero-space__page-label">{{ page.tab_label|default:page.title }}</span>
-                                <span class="hero-space__page-meta">{{ page.title }}</span>
-                            </span>
-                        {% else %}
-                            <a href="{% url 'heroes:page_detail' hero.slug page.slug %}" class="hero-space__page-link">
-                                <span class="hero-space__page-label">{{ page.tab_label|default:page.title }}</span>
-                                <span class="hero-space__page-meta">{{ page.title }}</span>
-                            </a>
-                        {% endif %}
-                    </li>
-                {% endfor %}
-            </ul>
-        </nav>
 
         <section class="hero-space__page-shell" aria-labelledby="current-page-title">
             <div class="hero-space__page-head">
@@ -79,11 +52,15 @@
             <div class="hero-space__placeholder">
                 <p class="hero-space__placeholder-title">Контент страницы будет здесь</p>
                 <p class="hero-space__placeholder-text">
-                    На этом шаге собран только shell: header, телефонная навигация по страницам и базовая область текущей HeroPage.
-                    Section menu, рендер секций, блоки и rich visuals пока не включены.
+                    На этом шаге shell дополнен fixed нижней навигацией по HeroPage.
+                    Section menu, scroll spy, рендер секций, блоки и сложная анимация пока не включены.
                 </p>
             </div>
         </section>
     </div>
 </article>
+{% endblock %}
+
+{% block fixed_bottom %}
+    {% include 'heroes/includes/hero_bottom_nav.html' with hero=hero pages=pages current_page=current_page %}
 {% endblock %}
