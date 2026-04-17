@@ -1,0 +1,25 @@
+{% extends "admin/index.html" %}
+
+{% block content_title %}
+    <div class="tmb-admin-welcome">
+        <div class="tmb-admin-welcome__intro">
+            <p class="tmb-admin-welcome__eyebrow">Навигация по данным</p>
+            <h1 class="tmb-admin-welcome__title">Контентная иерархия проекта</h1>
+            <p class="tmb-admin-welcome__text">
+                Рабочий путь редактора теперь читается так: сначала герой, потом страницы героя, дальше секции страницы,
+                потом блоки секции, и отдельно ассеты для портретов и иконок.
+            </p>
+        </div>
+        <div class="tmb-admin-welcome__steps">
+            <span class="tmb-admin-nav-pill">Герой</span>
+            <span class="tmb-admin-welcome__arrow">→</span>
+            <span class="tmb-admin-nav-pill">Страницы героя</span>
+            <span class="tmb-admin-welcome__arrow">→</span>
+            <span class="tmb-admin-nav-pill">Секции страницы</span>
+            <span class="tmb-admin-welcome__arrow">→</span>
+            <span class="tmb-admin-nav-pill">Блоки секции</span>
+            <span class="tmb-admin-welcome__arrow">→</span>
+            <span class="tmb-admin-nav-pill">Ассеты</span>
+        </div>
+    </div>
+{% endblock %}

@@ -20,7 +20,7 @@
     --space-5: 24px;
     --space-6: 32px;
     --space-7: 40px;
-    --hero-bottom-nav-height: 92px;
+    --hero-bottom-nav-height: 110px;
     --safe-area-bottom: env(safe-area-inset-bottom, 0px);
     --hero-accent: #d9d9d9;
 }
@@ -129,7 +129,10 @@ code {
 .page-intro__eyebrow,
 .hero-card__kicker,
 .hero-space__eyebrow,
-.hero-space__page-kicker {
+.hero-space__page-kicker,
+.hero-space__page-nav-kicker,
+.hero-space__page-context-label,
+.hero-bottom-nav__eyebrow {
     margin: 0;
     color: var(--muted-text-color);
     font-size: 0.78rem;
@@ -156,7 +159,8 @@ code {
 
 .page-text,
 .section-text,
-.empty-state__text {
+.empty-state__text,
+.hero-space__page-nav-text {
     margin: 0;
     max-width: 68ch;
     color: var(--muted-text-color);
@@ -173,7 +177,6 @@ code {
 }
 
 .hero-card {
-    --hero-accent-rgb: 125, 110, 247;
     overflow: hidden;
     background: rgba(255, 255, 255, 0.88);
     border: 1px solid rgba(15, 23, 42, 0.08);
@@ -400,41 +403,98 @@ code {
     max-height: 430px;
 }
 
-.hero-space__page-head > * + * {
-    margin-top: var(--space-2);
-}
-
-.hero-space__meta-list {
+.hero-space__page-context {
     display: grid;
     gap: 10px;
-    margin: var(--space-4) 0 0;
+    margin-bottom: var(--space-4);
 }
 
-.hero-space__meta-row {
+.hero-space__page-breadcrumbs {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
-    gap: var(--space-3);
-    padding: 12px 14px;
-    background: #fafafa;
-    border: 1px solid #ececec;
-    border-radius: 16px;
+    gap: 10px;
 }
 
-.hero-space__meta-row dt,
-.hero-space__meta-row dd {
-    margin: 0;
+.hero-space__page-breadcrumb {
+    display: inline-flex;
+    align-items: center;
+    min-height: 34px;
+    padding: 0 12px;
+    background: #f6f7fb;
+    border: 1px solid #e6e8ee;
+    border-radius: 999px;
+    font-weight: 700;
 }
 
-.hero-space__meta-row dt {
+.hero-space__page-breadcrumb--current {
+    background: color-mix(in srgb, var(--hero-accent) 16%, #ffffff);
+    border-color: color-mix(in srgb, var(--hero-accent) 48%, #d7dbe3);
+}
+
+.hero-space__page-breadcrumb-sep {
     color: var(--muted-text-color);
-    font-size: 0.9rem;
+    font-weight: 700;
 }
 
-.hero-space__meta-row dd {
-    text-align: right;
+.hero-space__page-nav {
+    display: grid;
+    gap: 14px;
+    margin-bottom: var(--space-4);
+    padding: 18px;
+    background: linear-gradient(180deg, rgba(250, 251, 253, 0.98), rgba(244, 246, 249, 0.94));
+    border: 1px solid #e5e8ef;
+    border-radius: 20px;
+}
+
+.hero-space__page-nav-head {
+    display: grid;
+    gap: 6px;
+}
+
+.hero-space__page-nav-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.hero-space__page-nav-item {
+    min-width: 0;
+}
+
+.hero-space__page-nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 46px;
+    padding: 0 14px;
+    color: inherit;
+    text-decoration: none;
+    background: #ffffff;
+    border: 1px solid #dde4ee;
+    border-radius: 999px;
     font-size: 0.95rem;
-    font-weight: 600;
+    font-weight: 700;
+}
+
+.hero-space__page-nav-link--current {
+    background: color-mix(in srgb, var(--hero-accent) 16%, #ffffff);
+    border-color: color-mix(in srgb, var(--hero-accent) 48%, #d7dbe3);
+}
+
+.hero-space__page-nav-icon,
+.hero-bottom-nav__icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.hero-space__page-head > * + * {
+    margin-top: var(--space-2);
 }
 
 .hero-space__sections {
@@ -714,12 +774,24 @@ code {
 }
 
 .hero-bottom-nav__shell {
-    padding: 10px;
+    padding: 12px;
     background: rgba(255, 255, 255, 0.94);
     border: 1px solid rgba(15, 23, 42, 0.08);
     border-radius: 24px 24px 22px 22px;
     box-shadow: 0 -8px 24px rgba(15, 23, 42, 0.08);
     backdrop-filter: blur(18px);
+}
+
+.hero-bottom-nav__header {
+    display: grid;
+    gap: 4px;
+    margin-bottom: 10px;
+}
+
+.hero-bottom-nav__hero-name {
+    font-size: 1rem;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
 }
 
 .hero-bottom-nav__list {
@@ -739,6 +811,7 @@ code {
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 10px;
     min-height: 52px;
     padding: 10px 12px;
     overflow: hidden;
@@ -839,6 +912,7 @@ code {
     .hero-card__link:hover,
     .hero-space__back-link:hover,
     .hero-bottom-nav__link:hover,
+    .hero-space__page-nav-link:hover,
     .hero-section-menu__toggle:hover,
     .hero-section-menu__link:hover,
     .hero-section-menu__close:hover,

@@ -1,0 +1,245 @@
+#header {
+    background: linear-gradient(180deg, #16181d, #1f232b);
+    color: #ffffff;
+}
+
+#branding h1,
+#branding h1 a {
+    color: inherit;
+}
+
+#user-tools a,
+#header a:link,
+#header a:visited {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+#content {
+    max-width: 1480px;
+}
+
+.module h2,
+.module caption,
+.inline-group h2 {
+    font-weight: 700;
+}
+
+fieldset.module.aligned {
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.aligned .form-row {
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+
+.submit-row {
+    position: sticky;
+    bottom: 12px;
+    z-index: 20;
+    margin-top: 24px;
+    border-radius: 18px;
+    box-shadow: 0 14px 34px rgba(15, 23, 42, 0.08);
+}
+
+.inline-group {
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.inline-group .tabular tr.has_original td {
+    padding-top: 14px;
+}
+
+.tmb-admin-brand__link {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 2px;
+    text-decoration: none;
+}
+
+.tmb-admin-brand__eyebrow {
+    font-size: 11px;
+    line-height: 1;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.72;
+}
+
+.tmb-admin-brand__title {
+    font-size: 20px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+.tmb-admin-welcome {
+    margin: 0 0 24px;
+    padding: 24px 26px;
+    background: linear-gradient(180deg, #ffffff, #f7f8fb);
+    border: 1px solid #dde3ee;
+    border-radius: 22px;
+    box-shadow: 0 12px 34px rgba(15, 23, 42, 0.05);
+}
+
+.tmb-admin-welcome__eyebrow {
+    margin: 0 0 8px;
+    color: #667085;
+    font-size: 12px;
+    line-height: 1;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.tmb-admin-welcome__title {
+    margin: 0;
+    font-size: 28px;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+}
+
+.tmb-admin-welcome__text {
+    margin: 12px 0 0;
+    max-width: 70ch;
+    color: #4b5565;
+}
+
+.tmb-admin-welcome__steps {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.tmb-admin-welcome__arrow {
+    color: #8b93a1;
+    font-weight: 700;
+}
+
+.tmb-admin-panel {
+    display: grid;
+    gap: 12px;
+    padding: 16px 18px;
+    background: linear-gradient(180deg, #fbfcfe, #f5f7fb);
+    border: 1px solid #dbe2ee;
+    border-radius: 18px;
+}
+
+.tmb-admin-path {
+    color: #445064;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.tmb-admin-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tmb-admin-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 38px;
+    padding: 0 14px;
+    color: #21306b;
+    background: #ffffff;
+    border: 1px solid #d7dff0;
+    border-radius: 999px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 1px 1px rgba(15, 23, 42, 0.03);
+}
+
+.tmb-admin-link--primary {
+    color: #ffffff !important;
+    background: #3056d3;
+    border-color: #3056d3;
+}
+
+.tmb-admin-muted {
+    color: #667085;
+}
+
+.tmb-admin-kpi {
+    display: inline-flex;
+    align-items: center;
+    margin: 0 6px 6px 0;
+    padding: 6px 10px;
+    color: #344054;
+    background: #f8fafc;
+    border: 1px solid #dde4ee;
+    border-radius: 999px;
+    font-weight: 700;
+}
+
+.tmb-admin-kpi--link {
+    text-decoration: none;
+}
+
+.tmb-admin-nav-preview {
+    display: grid;
+    gap: 12px;
+    padding: 16px 18px;
+    background: linear-gradient(180deg, #ffffff, #f7f8fb);
+    border: 1px solid #dde3ee;
+    border-radius: 18px;
+}
+
+.tmb-admin-nav-preview__hero {
+    font-size: 18px;
+    line-height: 1.1;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.tmb-admin-nav-preview__pages {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tmb-admin-nav-preview__note {
+    color: #667085;
+}
+
+.tmb-admin-nav-pill {
+    display: inline-flex;
+    align-items: center;
+    min-height: 34px;
+    padding: 0 12px;
+    background: #ffffff;
+    border: 1px solid #dbe2ee;
+    border-radius: 999px;
+    font-weight: 700;
+}
+
+.tmb-admin-nav-pill--current {
+    color: #ffffff;
+    background: #111827;
+    border-color: #111827;
+}
+
+.tmb-admin-list-main {
+    display: grid;
+    gap: 4px;
+}
+
+.tmb-admin-list-main strong {
+    font-weight: 700;
+}
+
+.tmb-admin-list-main span {
+    color: #667085;
+    font-size: 12px;
+    line-height: 1.35;
+}
+
+@media (max-width: 767px) {
+    .submit-row {
+        position: static;
+    }
+}

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}{{ hero.name }} — {{ current_page.title }} — Too Many Bones Helper{% endblock %}
+{% block title %}{{ hero.name }} — {{ current_page.display_title }} — Too Many Bones Helper{% endblock %}
 
 {% block extra_head %}
     <link rel="stylesheet" href="{% static 'heroes/hero_icons.css' %}">
@@ -45,7 +45,7 @@
                     <div class="hero-section-menu__panel-head">
                         <div>
                             <p class="hero-section-menu__eyebrow">Быстрый переход</p>
-                            <p class="hero-section-menu__title">{{ current_page.title }}</p>
+                            <p class="hero-section-menu__title">{{ current_page.display_title }}</p>
                         </div>
 
                         <button
@@ -92,7 +92,7 @@
                 <div class="hero-space__header-body">
                     <div class="hero-space__header-main">
                         <div class="hero-space__accent" aria-hidden="true"></div>
-                        <p class="hero-space__eyebrow">Hero space</p>
+                        <p class="hero-space__eyebrow">Герой</p>
                         <h1 class="hero-space__title">{{ hero.name }}</h1>
 
                         {% if hero.tagline %}
@@ -123,39 +123,48 @@
         </header>
 
         <section class="hero-space__page-shell" aria-labelledby="current-page-title">
+            <div class="hero-space__page-context">
+                <p class="hero-space__page-context-label">Пространство героя</p>
+                <div class="hero-space__page-breadcrumbs">
+                    <span class="hero-space__page-breadcrumb">{{ hero.name }}</span>
+                    <span class="hero-space__page-breadcrumb-sep" aria-hidden="true">→</span>
+                    <span class="hero-space__page-breadcrumb hero-space__page-breadcrumb--current">{{ current_page.navigation_label }}</span>
+                </div>
+            </div>
+
+            <nav class="hero-space__page-nav" aria-label="Страницы героя {{ hero.name }}">
+                <div class="hero-space__page-nav-head">
+                    <p class="hero-space__page-nav-kicker">Страницы героя</p>
+                    <p class="hero-space__page-nav-text">Сначала герой, потом внутри него выбирается нужная страница.</p>
+                </div>
+
+                <ul class="hero-space__page-nav-list">
+                    {% for page in pages %}
+                        <li class="hero-space__page-nav-item">
+                            {% if page.pk == current_page.pk %}
+                                <span class="hero-space__page-nav-link hero-space__page-nav-link--current" aria-current="page">
+                                    <img src="{{ page.icon_url }}" alt="" class="hero-space__page-nav-icon" aria-hidden="true">
+                                    <span class="hero-space__page-nav-label">{{ page.navigation_label }}</span>
+                                </span>
+                            {% else %}
+                                <a href="{% url 'heroes:page_detail' hero.slug page.slug %}" class="hero-space__page-nav-link">
+                                    <img src="{{ page.icon_url }}" alt="" class="hero-space__page-nav-icon" aria-hidden="true">
+                                    <span class="hero-space__page-nav-label">{{ page.navigation_label }}</span>
+                                </a>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </nav>
+
             <div class="hero-space__page-head">
                 <p class="hero-space__page-kicker">Текущая страница</p>
-                <h2 class="hero-space__page-title" id="current-page-title">{{ current_page.title }}</h2>
+                <h2 class="hero-space__page-title" id="current-page-title">{{ current_page.display_title }}</h2>
 
                 {% if current_page.lead %}
                     <p class="hero-space__page-lead">{{ current_page.lead }}</p>
                 {% endif %}
             </div>
-
-            <dl class="hero-space__meta-list">
-                <div class="hero-space__meta-row">
-                    <dt>slug</dt>
-                    <dd><code>{{ current_page.slug }}</code></dd>
-                </div>
-
-                {% if current_page.tab_label %}
-                    <div class="hero-space__meta-row">
-                        <dt>tab</dt>
-                        <dd>{{ current_page.tab_label }}</dd>
-                    </div>
-                {% endif %}
-
-                <div class="hero-space__meta-row">
-                    <dt>icon</dt>
-                    <dd>
-                        {% if current_page.icon %}
-                            {{ current_page.icon.title }}
-                        {% else %}
-                            <code>{{ current_page.resolved_icon_key }}</code>
-                        {% endif %}
-                    </dd>
-                </div>
-            </dl>
 
             {% if sections %}
                 <div class="hero-space__sections" aria-label="Секции текущей страницы">
@@ -166,7 +175,7 @@
                             aria-labelledby="section-title-{{ section.slug }}"
                         >
                             <div class="hero-space__section-head">
-                                <p class="hero-space__section-kicker">Section</p>
+                                <p class="hero-space__section-kicker">Раздел страницы</p>
                                 <h3 class="hero-space__section-title" id="section-title-{{ section.slug }}">
                                     {{ section.title }}
                                 </h3>
@@ -196,7 +205,7 @@
                 <div class="hero-space__placeholder">
                     <p class="hero-space__placeholder-title">Для этой страницы пока нет опубликованных секций</p>
                     <p class="hero-space__placeholder-text">
-                        Hero shell сохранён. На следующем шаге сюда можно будет добавить меню секций и рендеринг блоков.
+                        Пространство героя уже собрано: сверху выбран герой, ниже видна текущая страница, а дальше будут появляться секции и блоки.
                     </p>
                 </div>
             {% endif %}

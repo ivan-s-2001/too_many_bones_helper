@@ -57,7 +57,34 @@ class HeroPage(models.Model):
         ordering = ('hero', 'order', 'title')
 
     def __str__(self) -> str:
-        return f'{self.hero} — {self.title}'
+        return f'{self.hero.name} / {self.display_title}'
+
+    @staticmethod
+    def _strip_hero_prefix(title: str, hero_name: str) -> str:
+        clean_title = str(title or '').strip()
+        clean_hero_name = str(hero_name or '').strip()
+
+        if not clean_title or not clean_hero_name:
+            return clean_title
+
+        if clean_title.casefold() == clean_hero_name.casefold():
+            return clean_title
+
+        if clean_title.casefold().startswith(clean_hero_name.casefold()):
+            remainder = clean_title[len(clean_hero_name):].lstrip(' —–-:/|·•')
+            if remainder:
+                return remainder.strip()
+
+        return clean_title
+
+    @property
+    def display_title(self) -> str:
+        cleaned_title = self._strip_hero_prefix(self.title, self.hero.name)
+        return cleaned_title or self.title
+
+    @property
+    def navigation_label(self) -> str:
+        return str(self.tab_label or '').strip() or self.display_title
 
     @property
     def resolved_icon_key(self) -> str:
@@ -85,4 +112,4 @@ class PageSection(models.Model):
         ordering = ('page', 'order', 'title')
 
     def __str__(self) -> str:
-        return f'{self.page} — {self.title}'
+        return f'{self.page.hero.name} / {self.page.display_title} / {self.title}'

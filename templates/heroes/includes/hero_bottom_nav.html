@@ -1,6 +1,11 @@
 <nav class="hero-bottom-nav" aria-label="Страницы героя" style="--hero-accent: {{ hero.accent|default:'#d9d9d9' }};">
     <div class="hero-bottom-nav__inner">
         <div class="hero-bottom-nav__shell">
+            <div class="hero-bottom-nav__header">
+                <span class="hero-bottom-nav__eyebrow">Сейчас открыт герой</span>
+                <strong class="hero-bottom-nav__hero-name">{{ hero.name }}</strong>
+            </div>
+
             <ul class="hero-bottom-nav__list">
                 {% for page in pages %}
                     <li class="hero-bottom-nav__item">
@@ -8,7 +13,7 @@
                             <span
                                 class="hero-bottom-nav__link hero-bottom-nav__link--current"
                                 aria-current="page"
-                                title="{{ page.title }}"
+                                title="{{ page.display_title }}"
                             >
                                 <img
                                     src="{{ page.icon_url }}"
@@ -16,14 +21,14 @@
                                     class="hero-bottom-nav__icon"
                                     aria-hidden="true"
                                 >
-                                <span class="hero-bottom-nav__label">{{ page.tab_label|default:page.title }}</span>
+                                <span class="hero-bottom-nav__label">{{ page.navigation_label }}</span>
                             </span>
                         {% else %}
                             <a
                                 href="{% url 'heroes:page_detail' hero.slug page.slug %}"
                                 class="hero-bottom-nav__link"
-                                title="{{ page.title }}"
-                                aria-label="{{ page.title }}"
+                                title="{{ page.display_title }}"
+                                aria-label="{{ page.navigation_label }}"
                             >
                                 <img
                                     src="{{ page.icon_url }}"
@@ -31,7 +36,7 @@
                                     class="hero-bottom-nav__icon"
                                     aria-hidden="true"
                                 >
-                                <span class="hero-bottom-nav__label">{{ page.tab_label|default:page.title }}</span>
+                                <span class="hero-bottom-nav__label">{{ page.navigation_label }}</span>
                             </a>
                         {% endif %}
                     </li>

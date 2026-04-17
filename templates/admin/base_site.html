@@ -1,0 +1,16 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block extrastyle %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'admin/tmb_admin.css' %}">
+{% endblock %}
+
+{% block branding %}
+    <div class="tmb-admin-brand">
+        <a href="{% url 'admin:index' %}" class="tmb-admin-brand__link">
+            <span class="tmb-admin-brand__eyebrow">Too Many Bones Helper</span>
+            <strong class="tmb-admin-brand__title">Редакторская панель</strong>
+        </a>
+    </div>
+{% endblock %}
