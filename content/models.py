@@ -3,6 +3,8 @@ from pathlib import Path
 from django.db import models
 from django.utils.text import slugify
 
+from heroes.models import HeroPage, PageSection
+
 
 def asset_image_upload_to(instance, filename: str) -> str:
     extension = Path(filename).suffix.lower() or '.bin'
@@ -46,6 +48,41 @@ class Asset(models.Model):
         return self.title
 
 
+class GenericAsset(Asset):
+    class Meta:
+        proxy = True
+        verbose_name = 'Изображение'
+        verbose_name_plural = 'Изображения'
+
+
+class HeroPortraitAsset(Asset):
+    class Meta:
+        proxy = True
+        verbose_name = 'Портрет героя'
+        verbose_name_plural = 'Портреты героев'
+
+
+class PageIconAsset(Asset):
+    class Meta:
+        proxy = True
+        verbose_name = 'Иконка страницы'
+        verbose_name_plural = 'Иконки страниц'
+
+
+class ContentHeroPage(HeroPage):
+    class Meta:
+        proxy = True
+        verbose_name = 'Страница героя'
+        verbose_name_plural = 'Страницы героев'
+
+
+class ContentPageSection(PageSection):
+    class Meta:
+        proxy = True
+        verbose_name = 'Секция страницы'
+        verbose_name_plural = 'Секции страниц'
+
+
 class Block(models.Model):
     section = models.ForeignKey(
         'heroes.PageSection',
@@ -63,6 +100,8 @@ class Block(models.Model):
 
     class Meta:
         ordering = ('section', 'order', 'id')
+        verbose_name = 'Блок'
+        verbose_name_plural = 'Блоки'
 
     def __str__(self) -> str:
         label = self.title or self.type

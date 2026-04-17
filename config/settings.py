@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'heroes.apps.HeroesConfig',
     'content.apps.ContentConfig',
+    'game.apps.GameConfig',
     'web.apps.WebConfig',
 ]
 
